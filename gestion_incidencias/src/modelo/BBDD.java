@@ -39,7 +39,7 @@ public class BBDD {
 
 		try {
 
-			stmt = con.prepareStatement("insert into usuario values (?,?,?)");
+			stmt = con.prepareStatement("insert into usuarios values (?,?,?)");
 			stmt.setInt(1, 0);
 			stmt.setString(2, u.getUsuario());
 			stmt.setString(3, u.getContraseña());
@@ -58,23 +58,29 @@ public class BBDD {
 		}
 	}
 
-	public String consultarUsuario(Usuario u) {
+	public String consultarUsuarioContraseña(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
+		String usuariocontraseña = "";
 		String usuario = "";
+		String contraseña = "";
 		try {
 
 			con = conectar(con);
 
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select usuario from usuarios where usuario='" + u.getUsuario() + "'");
+			ResultSet rs = stmt.executeQuery("select usuario, password from usuarios where usuario='" + u.getUsuario()
+					+ "' and password='" + u.getContraseña() + "'");
 			rs.next();
 			usuario = rs.getString(1);
+			contraseña = rs.getString(2);
+			usuariocontraseña = usuario + contraseña;
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return usuario;
+		System.out.println(usuariocontraseña);
+		return usuariocontraseña;
 	}
 
 }

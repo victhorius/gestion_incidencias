@@ -5,6 +5,16 @@ public class Usuario {
 	private int portal, piso;
 	private char letra;
 
+	public Usuario() {
+
+	}
+
+	public Usuario(String usuario, String contraseña) {
+		super();
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+	}
+
 	public Usuario(String usuario, String contraseña, String email, int portal, int piso, char letra) {
 		super();
 		this.usuario = usuario;
