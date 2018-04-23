@@ -15,13 +15,13 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Log extends JFrame implements ActionListener, MouseListener, KeyListener, FocusListener {
+public class LogIn extends JFrame implements ActionListener, MouseListener, KeyListener, FocusListener {
 
 	private JLabel l1, l2;
 	private TextField tf1, tf2;
 	private Button b1;
 
-	public Log() {
+	public LogIn() {
 		super();
 		inicializarFrame();
 		inicializarComponentes();
@@ -128,7 +128,7 @@ public class Log extends JFrame implements ActionListener, MouseListener, KeyLis
 	}
 
 	public static void main(String[] args) {
-		Log log = new Log();
+		LogIn log = new LogIn();
 		log.setVisible(true);
 	}
 }
