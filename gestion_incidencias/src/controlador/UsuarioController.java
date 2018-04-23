@@ -11,6 +11,14 @@ public class UsuarioController {
 	static Scanner sc = new Scanner(System.in);
 	static datosPantalla dp = new datosPantalla();
 
+	public void Registrarse() {
+		String usuario = dp.introducirUsuario();
+		String pw = dp.introducirPassword();
+
+		Usuario u = new Usuario(usuario, pw);
+		c.registrarUsuario(u);
+	}
+
 	public void Login() {
 		String usuario = dp.introducirUsuario();
 		String pw = dp.introducirPassword();
