@@ -1,42 +1,44 @@
 package modelo;
 
 public class Usuario {
-	private String nombre, contrase�a, email;
+	private String usuario, contraseña;
 	private int portal, piso;
 	private char letra;
 
-	public Usuario(String nombre, String contrase�a, String email, int portal, int piso, char letra) {
+	public Usuario() {
+
+	}
+
+	public Usuario(String usuario, String contraseña) {
 		super();
-		this.nombre = nombre;
-		this.contrase�a = contrase�a;
-		this.email = email;
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+	}
+
+	public Usuario(String usuario, String contraseña, String email, int portal, int piso, char letra) {
+		super();
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		this.usuario = email;
 		this.portal = portal;
 		this.piso = piso;
 		this.letra = letra;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setUsuairo(String usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getContrase�a() {
-		return contrase�a;
+	public String getContraseña() {
+		return contraseña;
 	}
 
-	public void setContrase�a(String contrase�a) {
-		this.contrase�a = contrase�a;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 
 	public int getPortal() {
