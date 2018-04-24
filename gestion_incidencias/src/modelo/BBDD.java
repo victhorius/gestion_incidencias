@@ -60,6 +60,7 @@ public class BBDD {
 	/*
 	 * ***Comprobamos que sea correcto el usuario y contraseña con la bbdd***
 	 */
+
 	public String consultarUsuarioContraseña(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
