@@ -18,8 +18,7 @@ public class BBDD {
 			c = DriverManager.getConnection(sURL, "root", "");
 
 			/*
-			 * if (c != null)
-			 * System.out.println("Conectado a la base de datos");
+			 * if (c != null) System.out.println("Conectado a la base de datos");
 			 */
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
@@ -58,6 +57,9 @@ public class BBDD {
 		}
 	}
 
+	/*
+	 * ***Comprobamos que sea correcto el usuario y contraseña con la bbdd***
+	 */
 	public String consultarUsuarioContraseña(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
