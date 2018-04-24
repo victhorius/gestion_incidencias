@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-04-2018 a las 10:57:03
+-- Tiempo de generación: 24-04-2018 a las 12:19:41
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -47,6 +47,14 @@ CREATE TABLE `tipo_incidencia` (
   `subtipo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tipo_incidencia`
+--
+
+INSERT INTO `tipo_incidencia` (`id`, `tipo`, `subtipo`) VALUES
+(1, 'agua', 'inundacion'),
+(2, 'agua', 'fallo agua caliente');
+
 -- --------------------------------------------------------
 
 --
@@ -66,9 +74,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `correo`, `direccion`) VALUES
-(1, 'sergio', '1234', '', ''),
+(1, 'sergio', '1234', 'sergio@gmail.com', 'Calle falsa 123'),
 (2, 'lorena', '1234', '', ''),
-(3, 'miguel', '1234', '', '');
+(3, 'miguel', '1234', '', ''),
+(8, 'victor', '1234', 'victor@gmail.com', 'Calle del Gintonic 3');
 
 --
 -- Índices para tablas volcadas
@@ -109,13 +118,13 @@ ALTER TABLE `incidencias`
 -- AUTO_INCREMENT de la tabla `tipo_incidencia`
 --
 ALTER TABLE `tipo_incidencia`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
