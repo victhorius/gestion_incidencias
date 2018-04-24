@@ -32,4 +32,7 @@ public class UsuarioController {
 		}
 	}
 
+	public void a() {
+
+	}
 }
