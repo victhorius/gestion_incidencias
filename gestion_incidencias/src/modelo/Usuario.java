@@ -1,9 +1,9 @@
 package modelo;
 
 public class Usuario {
-	private String usuario, contraseña;
-	private int portal, piso;
-	private char letra;
+	private String user, password;
+	private int id;
+	private String direccion;
 
 	public Usuario() {
 
@@ -11,58 +11,40 @@ public class Usuario {
 
 	public Usuario(String usuario, String contraseña) {
 		super();
-		this.usuario = usuario;
-		this.contraseña = contraseña;
+		this.user = usuario;
+		this.password = contraseña;
 	}
 
-	public Usuario(String usuario, String contraseña, String email, int portal, int piso, char letra) {
-		super();
-		this.usuario = usuario;
-		this.contraseña = contraseña;
-		this.usuario = email;
-		this.portal = portal;
-		this.piso = piso;
-		this.letra = letra;
+	public String getUser() {
+		return user;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
-	public void setUsuairo(String usuario) {
-		this.usuario = usuario;
+	public String getPassword() {
+		return password;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public int getId() {
+		return id;
 	}
 
-	public int getPortal() {
-		return portal;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setPortal(int portal) {
-		this.portal = portal;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public int getPiso() {
-		return piso;
-	}
-
-	public void setPiso(int piso) {
-		this.piso = piso;
-	}
-
-	public char getLetra() {
-		return letra;
-	}
-
-	public void setLetra(char letra) {
-		this.letra = letra;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 }

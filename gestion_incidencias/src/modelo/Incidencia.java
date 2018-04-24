@@ -1,29 +1,29 @@
 package modelo;
 
 public class Incidencia {
-	private int idIncidencia;
-	private String tipoIncidencia;
+	private int id;
+	private String tipo, subtipo;
 
-	public Incidencia(int idIncidencia, String tipoIncidencia) {
+	public Incidencia(int id, String tipo) {
 		super();
-		this.idIncidencia = idIncidencia;
-		this.tipoIncidencia = tipoIncidencia;
+		this.id = id;
+		this.tipo = tipo;
 	}
 
 	public int getIdIncidencia() {
-		return idIncidencia;
+		return id;
 	}
 
-	public void setIdIncidencia(int idIncidencia) {
-		this.idIncidencia = idIncidencia;
+	public void setIdIncidencia(int id) {
+		this.id = id;
 	}
 
 	public String getTipoIncidencia() {
-		return tipoIncidencia;
+		return tipo;
 	}
 
-	public void setTipoIncidencia(String tipoIncidencia) {
-		this.tipoIncidencia = tipoIncidencia;
+	public void setTipoIncidencia(String tipo) {
+		this.tipo = tipo;
 	}
 
 }

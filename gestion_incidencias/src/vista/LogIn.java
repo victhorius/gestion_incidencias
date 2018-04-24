@@ -15,7 +15,12 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import controlador.UsuarioController;
+import modelo.Usuario;
+
 public class LogIn extends JFrame implements ActionListener, MouseListener, KeyListener, FocusListener {
+
+	static UsuarioController uc = new UsuarioController();
 
 	private JLabel l1, l2;
 	private TextField tf1, tf2;
@@ -38,12 +43,16 @@ public class LogIn extends JFrame implements ActionListener, MouseListener, KeyL
 	}
 
 	public void inicializarComponentes() {
+		String usuario = "";
+		String pw = "";
 
 		Font f1 = new Font("Arial", Font.BOLD, 20);
 		l1 = new JLabel("Usuario");
+		usuario = l1.getText();
 		l1.setBounds(50, 25, 200, 25);
 		l1.setFont(f1);
-		l2 = new JLabel("Contraseña");
+		l2 = new JLabel("ContraseÃ±a");
+		pw = l2.getText();
 		l2.setBounds(50, 125, 200, 25);
 		l2.setFont(f1);
 		tf1 = new TextField();
@@ -53,12 +62,13 @@ public class LogIn extends JFrame implements ActionListener, MouseListener, KeyL
 		b1 = new Button("Log-In");
 		b1.setBounds(200, 220, 100, 50);
 		b1.setFont(f1);
+		b1.addActionListener(this);
 		add(l1);
 		add(l2);
 		add(tf1);
 		add(tf2);
 		add(b1);
-
+		Usuario u = new Usuario(usuario, pw);
 	}
 
 	@Override
@@ -123,8 +133,10 @@ public class LogIn extends JFrame implements ActionListener, MouseListener, KeyL
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		Object o = e.getSource();
+		if (o == b1) {
+			uc.Login();
+		}
 	}
 
 	public static void main(String[] args) {

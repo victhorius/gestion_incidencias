@@ -41,8 +41,8 @@ public class BBDD {
 
 			stmt = con.prepareStatement("insert into usuarios values (?,?,?)");
 			stmt.setInt(1, 0);
-			stmt.setString(2, u.getUsuario());
-			stmt.setString(3, u.getContraseña());
+			stmt.setString(2, u.getUser());
+			stmt.setString(3, u.getPassword());
 
 			stmt.executeUpdate();
 
@@ -69,8 +69,8 @@ public class BBDD {
 			con = conectar(con);
 
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select usuario, password from usuarios where usuario='" + u.getUsuario()
-					+ "' and password='" + u.getContraseña() + "'");
+			ResultSet rs = stmt.executeQuery("select usuario, password from usuarios where usuario='" + u.getUser()
+					+ "' and password='" + u.getPassword() + "'");
 			rs.next();
 			usuario = rs.getString(1);
 			contraseña = rs.getString(2);
