@@ -8,5 +8,9 @@ public class principal {
 		UsuarioController uc = new UsuarioController();
 		Usuario u = new Usuario();
 		uc.Login();
+		
+		
+		
+		
 	}
 }
