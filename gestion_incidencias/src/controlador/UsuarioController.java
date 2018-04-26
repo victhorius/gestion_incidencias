@@ -8,7 +8,6 @@ import vista.datosPantalla;
 
 public class UsuarioController {
 	static BBDD c = new BBDD();
-	static Scanner sc = new Scanner(System.in);
 	static datosPantalla dp = new datosPantalla();
 
 	public void Registrarse() {
@@ -19,11 +18,9 @@ public class UsuarioController {
 		c.registrarUsuario(u);
 	}
 
-	public void Login() {
-		String usuario = dp.introducirUsuario();
-		String pw = dp.introducirPassword();
-		Usuario u = new Usuario(usuario, pw);
-		String usuariopw = usuario + pw;
+	public void Login(String user, String pw) {
+		Usuario u = new Usuario(user, pw);
+		String usuariopw = user + pw;
 		System.out.println(usuariopw);
 		if (usuariopw.equals(c.consultarUsuarioContraseña(u))) {
 			System.out.println("LOGIN CORRECTO");
