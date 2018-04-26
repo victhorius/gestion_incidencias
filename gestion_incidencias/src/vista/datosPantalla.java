@@ -39,13 +39,13 @@ public class datosPantalla {
 
 	public String introducirUsuario() {
 		System.out.println("Usuario:");
-		String usuario = sc.nextLine();
+		String usuario = sc.next();
 		return usuario;
 	}
 
 	public String introducirPassword() {
 		System.out.println("Contraseña:");
-		String pw = sc.nextLine();
+		String pw = sc.next();
 		return pw;
 	}
 }

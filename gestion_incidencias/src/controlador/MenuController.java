@@ -3,8 +3,13 @@ package controlador;
 import vista.datosPantalla;
 
 public class MenuController {
-	static datosPantalla dp = new datosPantalla();
-	static UsuarioController uc = new UsuarioController();
+
+	private datosPantalla dp;
+	private UsuarioController uc = new UsuarioController();
+
+	public MenuController(datosPantalla dp) {
+		this.dp = dp;
+	}
 
 	public void ejecucionMenu(int opcion) {
 		switch (opcion) {
@@ -13,7 +18,9 @@ public class MenuController {
 			break;
 
 		case 2:
-			uc.Login();
+			String user = dp.introducirUsuario();
+			String pw = dp.introducirPassword();
+			uc.Login(user, pw);
 			break;
 
 		default:
