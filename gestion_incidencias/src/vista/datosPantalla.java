@@ -10,7 +10,7 @@ public class datosPantalla {
 	public datosPantalla() {
 
 	}
-
+	
 	public int menuPrincipal() {
 		System.out.println("MENU");
 		System.out.println("1 - Registrarse");
