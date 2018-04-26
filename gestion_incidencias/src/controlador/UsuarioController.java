@@ -1,14 +1,11 @@
 package controlador;
 
-import java.util.Scanner;
-
 import modelo.BBDD;
 import modelo.Usuario;
 import vista.datosPantalla;
 
 public class UsuarioController {
 	static BBDD c = new BBDD();
-	static Scanner sc = new Scanner(System.in);
 	static datosPantalla dp = new datosPantalla();
 
 	public void Registrarse() {

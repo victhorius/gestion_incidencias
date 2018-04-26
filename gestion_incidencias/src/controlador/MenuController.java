@@ -1,6 +1,5 @@
 package controlador;
 
-import modelo.Usuario;
 import vista.datosPantalla;
 
 public class MenuController {
