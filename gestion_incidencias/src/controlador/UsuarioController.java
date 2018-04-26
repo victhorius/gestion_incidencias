@@ -31,8 +31,4 @@ public class UsuarioController {
 			System.out.println("LOGIN INCORRECTO");
 		}
 	}
-
-	public void a() {
-
-	}
 }

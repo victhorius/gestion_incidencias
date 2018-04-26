@@ -18,7 +18,8 @@ public class BBDD {
 			c = DriverManager.getConnection(sURL, "root", "");
 
 			/*
-			 * if (c != null) System.out.println("Conectado a la base de datos");
+			 * if (c != null)
+			 * System.out.println("Conectado a la base de datos");
 			 */
 
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
