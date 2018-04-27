@@ -4,10 +4,19 @@ public class Incidencia {
 	private int id;
 	private String tipo, subtipo;
 
-	public Incidencia(int id, String tipo) {
+	public Incidencia(int id, String tipo, String subtipo) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
+		this.subtipo = subtipo;
+	}
+
+	public String getSubtipo() {
+		return subtipo;
+	}
+
+	public void setSubtipo(String subtipo) {
+		this.subtipo = subtipo;
 	}
 
 	public int getIdIncidencia() {
