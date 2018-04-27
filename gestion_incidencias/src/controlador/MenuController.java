@@ -22,6 +22,9 @@ public class MenuController {
 			String user = dp.introducirUsuario();
 			String pw = dp.introducirPassword();
 			uc.Login(user, pw);
+			if (uc.Login(user, pw) == true) {
+				dp.menuIncidencias();
+			}
 			break;
 
 		default:
