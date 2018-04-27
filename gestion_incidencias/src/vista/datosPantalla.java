@@ -2,6 +2,7 @@ package vista;
 
 import java.util.Scanner;
 
+import modelo.Incidencia;
 import modelo.Usuario;
 
 public class datosPantalla {
@@ -10,7 +11,7 @@ public class datosPantalla {
 	public datosPantalla() {
 
 	}
-	
+
 	public int menuPrincipal() {
 		System.out.println("MENU");
 		System.out.println("1 - Registrarse");
@@ -30,10 +31,10 @@ public class datosPantalla {
 
 	}
 
-	public String menuCrearIncidencia() {
+	public String introducirComentario() {
 		System.out.println("CREAR INCIDENCIA");
 		System.out.println("Comentario: ");
-		String comentario = sc.nextLine();
+		String comentario = sc.next();
 		return comentario;
 	}
 

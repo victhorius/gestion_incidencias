@@ -2,13 +2,17 @@ package modelo;
 
 public class Incidencia {
 	private int id;
-	private String tipo, subtipo;
+	private String tipo, subtipo, comentario;
 
-	public Incidencia(int id, String tipo, String subtipo) {
+	public Incidencia() {
+
+	}
+
+	public Incidencia(String tipo, String subtipo, String comentario) {
 		super();
-		this.id = id;
 		this.tipo = tipo;
 		this.subtipo = subtipo;
+		this.comentario = comentario;
 	}
 
 	public String getSubtipo() {

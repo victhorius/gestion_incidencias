@@ -87,4 +87,66 @@ public class BBDD {
 		return usuariocontraseña;
 	}
 
+	public int consultarIdUsuario(Usuario u) {
+		Connection con = null;
+		Statement stmt = null;
+		int id = 0;
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select id from usuarios where usuario='" + u.getUser() + "'");
+			rs.next();
+			id = rs.getInt(1);
+
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+
+	public String consultarTiposIncidencias() {
+		Connection con = null;
+		Statement stmt = null;
+		String tipo = "";
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select DISTINCT(tipo) from tipo_incidencia ");
+			while (rs.next()) {
+				tipo = rs.getString(1);
+				System.out.println(tipo);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tipo;
+	}
+
+	public String consultarSubtipos(String tipo) {
+		Connection con = null;
+		Statement stmt = null;
+		String subtipo = "";
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo + "'");
+			while (rs.next()) {
+				subtipo = rs.getString(1);
+				System.out.println(subtipo);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tipo;
+	}
+
 }
