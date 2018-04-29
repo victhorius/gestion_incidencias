@@ -12,6 +12,6 @@ public class IncidenciaController {
 	public void incidencia() {
 
 		String tipo = c.consultarTiposIncidencias();
-		c.consultarSubtipos(tipo;
+		c.consultarSubtipos(tipo);
 	}
 }
