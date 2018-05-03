@@ -31,18 +31,20 @@ public class MenuController {
 				int opcion2 = dp.menuIncidencias();
 				switch (opcion2) {
 				case 1:
-
+					dp.menuCrearIncidencia(ic.crearIncidencia());
 					break;
 
 				default:
 					break;
 				}
 			}
+		case 3:
+			System.exit(0);
 			break;
 
 		default:
 			break;
 		}
-	}
 
+	}
 }

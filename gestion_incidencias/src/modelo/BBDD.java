@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class BBDD {
 
@@ -39,10 +40,9 @@ public class BBDD {
 
 		try {
 
-			stmt = con.prepareStatement("insert into usuarios values (?,?,?)");
-			stmt.setInt(1, 0);
-			stmt.setString(2, u.getUser());
-			stmt.setString(3, u.getPassword());
+			stmt = con.prepareStatement("insert into usuarios (usuario,password) values (?,?)");
+			stmt.setString(1, u.getUser());
+			stmt.setString(2, u.getPassword());
 
 			stmt.executeUpdate();
 
@@ -147,6 +147,32 @@ public class BBDD {
 			e.printStackTrace();
 		}
 		return tipo;
+	}
+
+	public ArrayList<Incidencia> consultarTipoYSubtipo() {
+		Connection con = null;
+		Statement stmt = null;
+		String tipo, subtipo = "";
+		int id;
+		ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from tipo_incidencia");
+			while (rs.next()) {
+				id = rs.getInt(1);
+				tipo = rs.getString(2);
+				subtipo = rs.getString(3);
+				Incidencia i = new Incidencia(id, tipo, subtipo);
+				incidencias.add(i);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return incidencias;
 	}
 
 }

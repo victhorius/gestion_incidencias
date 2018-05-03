@@ -1,5 +1,6 @@
 package vista;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import modelo.Incidencia;
@@ -31,6 +32,10 @@ public class datosPantalla {
 
 	}
 
+	public void menuCrearIncidencia(ArrayList<Incidencia> i) {
+		System.out.println("Selecciona tipo de incidencias");
+	}
+
 	public String introducirComentario() {
 		System.out.println("CREAR INCIDENCIA");
 		System.out.println("Comentario: ");
@@ -49,4 +54,5 @@ public class datosPantalla {
 		String pw = sc.next();
 		return pw;
 	}
+
 }
