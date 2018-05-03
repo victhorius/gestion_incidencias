@@ -8,7 +8,7 @@ public class Incidencia {
 
 	}
 
-	public Incidencia(String tipo, String subtipo, String comentario) {
+	public Incidencia(int id, String tipo, String subtipo, String comentario) {
 		super();
 		this.tipo = tipo;
 		this.subtipo = subtipo;
