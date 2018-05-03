@@ -18,6 +18,7 @@ public class UsuarioController {
 		c.registrarUsuario(u);
 	}
 
+	//
 	public boolean Login(String user, String pw) {
 		boolean login = false;
 		Usuario u = new Usuario(user, pw);
