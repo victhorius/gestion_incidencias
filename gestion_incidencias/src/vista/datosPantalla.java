@@ -99,7 +99,7 @@ public class datosPantalla {
 		incidencia.setComentario(comentario);
 		incidencia.setFecha("SYSDATE");
 		incidencia.setIdincidencia(idincidencia);
-		incidencia.setIdusuario(0);//TO DO
+		incidencia.setIdusuario(0);// TODO
 
 	}
 
