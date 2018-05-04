@@ -8,6 +8,19 @@ public class Incidencia {
 
 	}
 
+	public Incidencia(String tipo, String subtipo) {
+		super();
+		this.tipo = tipo;
+		this.subtipo = subtipo;
+	}
+
+	public Incidencia(int id, String tipo, String subtipo) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.subtipo = subtipo;
+	}
+
 	public Incidencia(int id, String tipo, String subtipo, String comentario) {
 		super();
 		this.tipo = tipo;
@@ -39,4 +52,10 @@ public class Incidencia {
 		this.tipo = tipo;
 	}
 
+	@Override
+	public String toString() {
+		return "Incidencia [id=" + id + ", tipo=" + tipo + ", subtipo=" + subtipo +"]";
+	}
+	
+	
 }

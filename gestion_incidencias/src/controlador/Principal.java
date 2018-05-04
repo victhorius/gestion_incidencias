@@ -7,7 +7,7 @@ public class Principal {
 		UsuarioController uc = new UsuarioController();
 		IncidenciaController ic = new IncidenciaController();
 
-		ic.incidencia();
+		ic.crearIncidencia();
 
 		datosPantalla dp = new datosPantalla();
 		MenuController mc = new MenuController(dp);
