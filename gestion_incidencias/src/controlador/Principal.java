@@ -8,8 +8,7 @@ public class Principal {
 		IncidenciaController ic = new IncidenciaController();
 
 		ic.crearIncidencia();
-		ic.mostrarTipos();
-		
+
 		datosPantalla dp = new datosPantalla();
 		MenuController mc = new MenuController(dp);
 		int opcion = dp.menuPrincipal();

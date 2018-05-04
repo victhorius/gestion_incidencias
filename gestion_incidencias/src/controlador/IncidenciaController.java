@@ -15,11 +15,4 @@ public class IncidenciaController {
 	public ArrayList<Incidencia> crearIncidencia() {
 		return c.consultarTipoYSubtipo();
 	}
-
-	public void mostrarTipos() {
-		for (int i = 0; i < this.crearIncidencia().size(); i++) {
-			
-		}
-
-	}
 }
