@@ -1,15 +1,18 @@
 package modelo;
 
-public class IncidenciasCreadas {
+import java.util.Calendar;
 
-	private String fecha, comentario;
-	private int idusuario, idincidencia;
+public class IncidenciasCreadas {
+	private Calendar fecha;
+	private String comentario;
+	private int idusuario;
+	private int idincidencia;
 
 	public IncidenciasCreadas() {
 		super();
 	}
 
-	public IncidenciasCreadas(int idusuario, int idincidencia, String fecha, String comentario) {
+	public IncidenciasCreadas(int idusuario, int idincidencia, Calendar fecha, String comentario) {
 		super();
 		this.idusuario = idusuario;
 		this.idincidencia = idincidencia;
@@ -33,11 +36,11 @@ public class IncidenciasCreadas {
 		this.idincidencia = idincidencia;
 	}
 
-	public String getFecha() {
+	public Calendar getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Calendar fecha) {
 		this.fecha = fecha;
 	}
 
@@ -47,5 +50,11 @@ public class IncidenciasCreadas {
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+	@Override
+	public String toString() {
+		return "IncidenciasCreadas [fecha=" + fecha.getTime() + ", comentario=" + comentario + ", idusuario="
+				+ idusuario + ", idincidencia=" + idincidencia + "]";
 	}
 }

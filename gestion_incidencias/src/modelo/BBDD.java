@@ -8,8 +8,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * Esta clase representa la conexion y las consultas, insercion y modificaciones
+ * en la base de datos.
+ * 
+ * @author Miguel, Víctor y Sergio
+ * 
+ */
 public class BBDD {
-
+	/**
+	 * Comprueba la conexion a la base de datos y en caso de que sea correcta la
+	 * devuelve.
+	 * 
+	 * @param c
+	 *            --> Es la conexion a comprobar.
+	 * @return La conexion metida por parámetro ya evaluada.
+	 */
 	public Connection conectar(Connection c) {
 		String sDriver = "com.mysql.jdbc.Driver";
 		String sURL = "jdbc:mysql://localhost:3306/comunidad";
@@ -18,11 +32,9 @@ public class BBDD {
 			Class.forName(sDriver).newInstance();
 			c = DriverManager.getConnection(sURL, "root", "");
 
-			/*
-			 * if (c != null)
-			 * System.out.println("Conectado a la base de datos");
-			 */
-
+			if (c != null) {
+				System.out.println("Conexion correcta");
+			}
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -34,7 +46,7 @@ public class BBDD {
 		con = conectar(con);
 		PreparedStatement stmt = null;
 
-		/*
+		/**
 		 * ***INSERTAMOS USUARIO***
 		 */
 
@@ -83,7 +95,6 @@ public class BBDD {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(usuariocontraseña);
 		return usuariocontraseña;
 	}
 
@@ -128,7 +139,7 @@ public class BBDD {
 		return tipo;
 	}
 
-	public String consultarSubtipos(String tipo) {
+	/*public String consultarSubtipos(String tipo) {
 		Connection con = null;
 		Statement stmt = null;
 		String subtipo = "";
@@ -147,7 +158,7 @@ public class BBDD {
 			e.printStackTrace();
 		}
 		return tipo;
-	}
+	}*/
 
 	public ArrayList<Incidencia> consultarTipoYSubtipo() {
 		Connection con = null;
