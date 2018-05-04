@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import modelo.Incidencia;
+import modelo.IncidenciasCreadas;
 import modelo.Usuario;
 
 public class datosPantalla {
@@ -43,6 +44,7 @@ public class datosPantalla {
 	public void menuCrearIncidencia(ArrayList<Incidencia> i) {
 		int cont = 1;
 		String tipoaux;
+		String subtipoaux;
 		System.out.println("Selecciona tipo de incidencias");
 		HashSet<String> tipos = new HashSet<String>();
 		ArrayList<String> tiposA = new ArrayList<String>();
@@ -63,8 +65,8 @@ public class datosPantalla {
 			System.out.println((j + 1) + " - " + tiposA.get(j));
 		}
 
-		int opcion = sc.nextInt();
-		tipoaux = tiposA.get(opcion - 1);
+		int opciontipo = sc.nextInt();
+		tipoaux = tiposA.get(opciontipo - 1);
 
 		for (int j = 0; j < i.size(); j++) {
 			if (i.get(j).getTipoIncidencia().equals(tipoaux)) {
@@ -77,10 +79,30 @@ public class datosPantalla {
 		for (int j = 0; j < subTiposA.size(); j++) {
 			System.out.println((j + 1) + " - " + subTiposA.get(j));
 		}
+
+		int opcionsubtipo = sc.nextInt();
+		subtipoaux = subTiposA.get(opcionsubtipo - 1);
+
+		int idincidencia = 0;
+
+		for (int j = 0; j < i.size(); j++) {
+
+			if (i.get(j).getTipoIncidencia().equals(tipoaux) && i.get(j).getSubtipo().equals(subtipoaux)) {
+				idincidencia = i.get(j).getIdIncidencia();
+			}
+		}
+
+		String comentario = introducirComentario();
+
+		IncidenciasCreadas incidencia = new IncidenciasCreadas();
+
+		incidencia.setComentario(comentario);
+		incidencia.setFecha("SYSDATE");
+		incidencia.setIdincidencia(idincidencia);
+		incidencia.setIdusuario(0);//TO DO
+
 	}
 
-	
-	
 	public String introducirComentario() {
 		System.out.println("CREAR INCIDENCIA");
 		System.out.println("Comentario: ");
