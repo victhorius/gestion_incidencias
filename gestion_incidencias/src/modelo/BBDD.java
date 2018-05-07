@@ -139,26 +139,18 @@ public class BBDD {
 		return tipo;
 	}
 
-	/*public String consultarSubtipos(String tipo) {
-		Connection con = null;
-		Statement stmt = null;
-		String subtipo = "";
-		try {
-
-			con = conectar(con);
-
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo + "'");
-			while (rs.next()) {
-				subtipo = rs.getString(1);
-				System.out.println(subtipo);
-			}
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return tipo;
-	}*/
+	/*
+	 * public String consultarSubtipos(String tipo) { Connection con = null;
+	 * Statement stmt = null; String subtipo = ""; try {
+	 * 
+	 * con = conectar(con);
+	 * 
+	 * stmt = con.createStatement(); ResultSet rs =
+	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo +
+	 * "'"); while (rs.next()) { subtipo = rs.getString(1);
+	 * System.out.println(subtipo); } con.close(); } catch (SQLException e) {
+	 * e.printStackTrace(); } return tipo; }
+	 */
 
 	public ArrayList<Incidencia> consultarTipoYSubtipo() {
 		Connection con = null;

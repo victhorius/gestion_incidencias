@@ -54,8 +54,7 @@ public class Incidencia {
 
 	@Override
 	public String toString() {
-		return "Incidencia [id=" + id + ", tipo=" + tipo + ", subtipo=" + subtipo +"]";
+		return "Incidencia [id=" + id + ", tipo=" + tipo + ", subtipo=" + subtipo + "]";
 	}
-	
-	
+
 }
