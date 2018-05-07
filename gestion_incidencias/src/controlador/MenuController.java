@@ -1,5 +1,6 @@
 package controlador;
 
+import modelo.BBDD;
 import modelo.Usuario;
 import vista.datosPantalla;
 
@@ -8,6 +9,7 @@ public class MenuController {
 	private datosPantalla dp;
 	private UsuarioController uc = new UsuarioController();
 	private IncidenciaController ic = new IncidenciaController();
+	static BBDD c = new BBDD();
 
 	public MenuController(datosPantalla dp) {
 		this.dp = dp;
@@ -29,9 +31,11 @@ public class MenuController {
 			uc.Login(user, pw);
 			if (uc.Login(user, pw) == true) {
 				int opcion2 = dp.menuIncidencias();
+				Usuario u = new Usuario(user, pw);
+				u.setId(c.consultarIdUsuario(u));
 				switch (opcion2) {
 				case 1:
-					dp.menuCrearIncidencia(ic.crearIncidencia());
+					dp.menuCrearIncidencia(ic.crearIncidencia(), u);
 					break;
 
 				default:

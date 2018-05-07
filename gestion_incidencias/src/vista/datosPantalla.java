@@ -6,12 +6,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import modelo.BBDD;
 import modelo.Incidencia;
 import modelo.IncidenciasCreadas;
 import modelo.Usuario;
 
 public class datosPantalla {
 	static Scanner sc = new Scanner(System.in);
+	static BBDD c = new BBDD();
 
 	public datosPantalla() {
 
@@ -41,7 +43,7 @@ public class datosPantalla {
 	 * que selecciona el usuario, devolverá la incidencia creada
 	 */
 
-	public void menuCrearIncidencia(ArrayList<Incidencia> i) {
+	public void menuCrearIncidencia(ArrayList<Incidencia> i, Usuario u) {
 		int cont = 1;
 		String tipoaux;
 		String subtipoaux;
@@ -99,8 +101,7 @@ public class datosPantalla {
 		incidencia.setComentario(comentario);
 		incidencia.setFecha("SYSDATE");
 		incidencia.setIdincidencia(idincidencia);
-		incidencia.setIdusuario(0);// TODO
-
+		incidencia.setIdusuario(u.getId());
 	}
 
 	public String introducirComentario() {

@@ -18,7 +18,6 @@ public class UsuarioController {
 		c.registrarUsuario(u);
 	}
 
-	
 	public boolean Login(String user, String pw) {
 		boolean login = false;
 		Usuario u = new Usuario(user, pw);
@@ -26,6 +25,7 @@ public class UsuarioController {
 		System.out.println(usuariopw);
 		if (usuariopw.equals(c.consultarUsuarioContraseña(u))) {
 			System.out.println("LOGIN CORRECTO");
+			u.setId(c.consultarIdUsuario(u));
 			login = true;
 		} else {
 			System.out.println("LOGIN INCORRECTO");
