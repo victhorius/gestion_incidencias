@@ -22,6 +22,7 @@ public class UsuarioController {
 		String usuariopw = user + pw;
 		if (usuariopw.equals(c.consultarUsuarioContraseña(u))) {
 			System.out.println("LOGIN CORRECTO");
+			u.setId(c.consultarIdUsuario(u));
 			login = true;
 		} else {
 			System.out.println("LOGIN INCORRECTO");

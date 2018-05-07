@@ -6,8 +6,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import modelo.BBDD;
 import modelo.Incidencia;
 import modelo.IncidenciasCreadas;
+import modelo.Usuario;
 
 /**
  * Recoje los datos y genera los menús correspondientes.
@@ -16,16 +18,17 @@ import modelo.IncidenciasCreadas;
  * 
  */
 public class datosPantalla {
-	Scanner sc = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in);
+	static BBDD c = new BBDD();
 
 	public datosPantalla() {
 
 	}
 
 	/**
-	 * Muestra el menú principal. La opcion 1 nos manda a la pantalla de registro de
-	 * usuarios. La opcion 2 nos lleva a la pantalla de login. La opcion 3 sale del
-	 * programa.
+	 * Muestra el menú principal. La opcion 1 nos manda a la pantalla de
+	 * registro de usuarios. La opcion 2 nos lleva a la pantalla de login. La
+	 * opcion 3 sale del programa.
 	 * 
 	 * @return La opcion elegida.
 	 */
@@ -39,10 +42,10 @@ public class datosPantalla {
 	}
 
 	/**
-	 * Muestra el menú secundario. La opcion 1 nos manda a la pantalla de registro
-	 * de incidencias. La opcion 2 nos permite consultar una pantalla con el estado
-	 * de las incidencias creadas. La opcion 3 nos lleva a la pantalla de
-	 * modificación del perfil.
+	 * Muestra el menú secundario. La opcion 1 nos manda a la pantalla de
+	 * registro de incidencias. La opcion 2 nos permite consultar una pantalla
+	 * con el estado de las incidencias creadas. La opcion 3 nos lleva a la
+	 * pantalla de modificación del perfil.
 	 * 
 	 * @return La opcion elegida.
 	 */
@@ -93,11 +96,12 @@ public class datosPantalla {
 	 * Muestra por pantalla Menús de los tipos y subtipos de incidencias.
 	 * 
 	 * @param i
-	 *            -->Es un ArrayList con las incidencias predefinidas anteriormente.
+	 *            -->Es un ArrayList con las incidencias predefinidas
+	 *            anteriormente.
 	 * @see
 	 */
 
-	public void menuCrearIncidencia(ArrayList<Incidencia> i) {
+	public void menuCrearIncidencia(ArrayList<Incidencia> i, Usuario u) {
 
 		System.out.println("Selecciona tipo de incidencias a crear");
 
@@ -155,8 +159,9 @@ public class datosPantalla {
 		incidencia.setComentario(comentario);
 		incidencia.setFecha(Calendar.getInstance());
 		incidencia.setIdincidencia(idincidencia);
-		incidencia.setIdusuario(2);// TODO
-		System.out.println(incidencia.toString());
+		incidencia.setIdusuario(u.getId());
+		
+		
 	}
 
 }
