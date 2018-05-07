@@ -1,7 +1,7 @@
 package vista;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -11,6 +11,12 @@ import modelo.Incidencia;
 import modelo.IncidenciasCreadas;
 import modelo.Usuario;
 
+/**
+ * Recoje los datos y genera los menús correspondientes.
+ * 
+ * @author Miguel, Víctor y Sergio
+ * 
+ */
 public class datosPantalla {
 	static Scanner sc = new Scanner(System.in);
 	static BBDD c = new BBDD();
@@ -19,6 +25,13 @@ public class datosPantalla {
 
 	}
 
+	/**
+	 * Muestra el menú principal. La opcion 1 nos manda a la pantalla de
+	 * registro de usuarios. La opcion 2 nos lleva a la pantalla de login. La
+	 * opcion 3 sale del programa.
+	 * 
+	 * @return La opcion elegida.
+	 */
 	public int menuPrincipal() {
 		System.out.println("MENU");
 		System.out.println("1 - Registrarse");
@@ -28,6 +41,14 @@ public class datosPantalla {
 		return opcion;
 	}
 
+	/**
+	 * Muestra el menú secundario. La opcion 1 nos manda a la pantalla de
+	 * registro de incidencias. La opcion 2 nos permite consultar una pantalla
+	 * con el estado de las incidencias creadas. La opcion 3 nos lleva a la
+	 * pantalla de modificación del perfil.
+	 * 
+	 * @return La opcion elegida.
+	 */
 	public int menuIncidencias() {
 		System.out.println("MENU INCIDENCIAS");
 		System.out.println("1 - Crear Incidencia");
@@ -38,29 +59,66 @@ public class datosPantalla {
 
 	}
 
-	/*
-	 * Muestra por pantalla tipos y subtipos de incidencia y recoge la opcion
-	 * que selecciona el usuario, devolverá la incidencia creada
+	/**
+	 * Genera un comentario para la incidencia.
+	 * 
+	 * @return El comentario generado por el usuario.
+	 */
+	public String introducirComentario() {
+		System.out.println("Introduce comentario: ");
+		String comentario = sc.next();
+		return comentario;
+	}
+
+	/**
+	 * Pide un nombre de usuario para comprobarlo en el login.
+	 * 
+	 * @return El nombre de usuario para el Login.
+	 */
+	public String introducirUsuario() {
+		System.out.println("Usuario:");
+		String usuario = sc.next();
+		return usuario;
+	}
+
+	/**
+	 * Pide la contraseña del usuario para comprobarla en el login.
+	 * 
+	 * @return La contraseña del usuario para el Login.
+	 */
+	public String introducirPassword() {
+		System.out.println("Contraseña:");
+		String pw = sc.next();
+		return pw;
+	}
+
+	/**
+	 * Muestra por pantalla Menús de los tipos y subtipos de incidencias.
+	 * 
+	 * @param i
+	 *            -->Es un ArrayList con las incidencias predefinidas
+	 *            anteriormente.
+	 * @see
 	 */
 
 	public void menuCrearIncidencia(ArrayList<Incidencia> i, Usuario u) {
-		int cont = 1;
-		String tipoaux;
-		String subtipoaux;
-		System.out.println("Selecciona tipo de incidencias");
-		HashSet<String> tipos = new HashSet<String>();
-		ArrayList<String> tiposA = new ArrayList<String>();
-		ArrayList<String> subTiposA = new ArrayList<String>();
 
+		System.out.println("Selecciona tipo de incidencias a crear");
+
+		HashSet<String> tipos = new HashSet<String>();
 		for (int j = 0; j < i.size(); j++) {
 			tipos.add(i.get(j).getTipoIncidencia());
 
 		}
 
-		for (Iterator iterator = tipos.iterator(); iterator.hasNext();) {
+		String tipoaux, subtipoaux;
+
+		ArrayList<String> tiposA = new ArrayList<String>();
+		ArrayList<String> subTiposA = new ArrayList<String>();
+
+		for (Iterator<String> iterator = tipos.iterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			tiposA.add(string);
-			cont++;
 		}
 
 		for (int j = 0; j < tiposA.size(); j++) {
@@ -99,28 +157,11 @@ public class datosPantalla {
 		IncidenciasCreadas incidencia = new IncidenciasCreadas();
 
 		incidencia.setComentario(comentario);
-		incidencia.setFecha("SYSDATE");
+		incidencia.setFecha(Calendar.getInstance());
 		incidencia.setIdincidencia(idincidencia);
 		incidencia.setIdusuario(u.getId());
-	}
-
-	public String introducirComentario() {
-		System.out.println("CREAR INCIDENCIA");
-		System.out.println("Comentario: ");
-		String comentario = sc.next();
-		return comentario;
-	}
-
-	public String introducirUsuario() {
-		System.out.println("Usuario:");
-		String usuario = sc.next();
-		return usuario;
-	}
-
-	public String introducirPassword() {
-		System.out.println("Contraseña:");
-		String pw = sc.next();
-		return pw;
+		
+		
 	}
 
 }

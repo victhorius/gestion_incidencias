@@ -43,6 +43,7 @@ public class MenuController {
 				}
 			}
 		case 3:
+			System.out.println("Adiós");
 			System.exit(0);
 			break;
 
