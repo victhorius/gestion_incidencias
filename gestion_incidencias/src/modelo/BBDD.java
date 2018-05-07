@@ -41,6 +41,35 @@ public class BBDD {
 		return c;
 	}
 
+	public void registrarIncidencia(IncidenciasCreadas incidencia) {
+		Connection con = null;
+		con = conectar(con);
+		PreparedStatement stmt = null;
+
+		/**
+		 * ***INSERTAMOS INCIDENCIA***
+		 */
+
+		try {
+
+			stmt = con.prepareStatement("insert into incidencias (idusuario, idincidencia, comentario, fecha) values ("
+					+ incidencia.getIdusuario() + "," + incidencia.getIdincidencia() + ",'" + incidencia.getComentario()
+					+ "', NOW())");
+
+			stmt.executeUpdate();
+
+			/*
+			 * if (filaInsertada > 0) System.out.println("fila insertada");
+			 */
+
+			con.close();
+		} catch (
+
+		SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void registrarUsuario(Usuario u) {
 		Connection con = null;
 		con = conectar(con);
@@ -139,26 +168,18 @@ public class BBDD {
 		return tipo;
 	}
 
-	/*public String consultarSubtipos(String tipo) {
-		Connection con = null;
-		Statement stmt = null;
-		String subtipo = "";
-		try {
-
-			con = conectar(con);
-
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo + "'");
-			while (rs.next()) {
-				subtipo = rs.getString(1);
-				System.out.println(subtipo);
-			}
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return tipo;
-	}*/
+	/*
+	 * public String consultarSubtipos(String tipo) { Connection con = null;
+	 * Statement stmt = null; String subtipo = ""; try {
+	 * 
+	 * con = conectar(con);
+	 * 
+	 * stmt = con.createStatement(); ResultSet rs =
+	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" +
+	 * tipo + "'"); while (rs.next()) { subtipo = rs.getString(1);
+	 * System.out.println(subtipo); } con.close(); } catch (SQLException e) {
+	 * e.printStackTrace(); } return tipo; }
+	 */
 
 	public ArrayList<Incidencia> consultarTipoYSubtipo() {
 		Connection con = null;
