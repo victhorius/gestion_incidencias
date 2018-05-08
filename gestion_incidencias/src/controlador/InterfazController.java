@@ -23,7 +23,7 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 
 	public InterfazController(TextField user, JPasswordField password) {
 		user.getText();
-		password.getText();
+		password.getPassword();
 	}
 
 	@Override
