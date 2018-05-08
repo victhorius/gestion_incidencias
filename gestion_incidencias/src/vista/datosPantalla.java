@@ -95,7 +95,8 @@ public class datosPantalla {
 	 * 
 	 * @param i
 	 *            -Es un ArrayList con las incidencias predefinidas anteriormente.
-	 * @see
+	 * @param u
+	 *            -Es el usuario que crea la incidencia.
 	 */
 
 	public void menuCrearIncidencia(ArrayList<Incidencia> i, Usuario u) {

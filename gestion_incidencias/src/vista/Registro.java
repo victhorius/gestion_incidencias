@@ -142,10 +142,6 @@ public class Registro extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-	/**
-	 * Launch the application.
-	 * @param Argumentos del sistema.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -158,9 +154,4 @@ public class Registro extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
-
 }
