@@ -21,7 +21,7 @@ public class BBDD {
 	 * devuelve.
 	 * 
 	 * @param c
-	 *            --> Es la conexion a comprobar.
+	 *            - Es la conexion a comprobar.
 	 * @return La conexion metida por parámetro ya evaluada.
 	 */
 	public Connection conectar(Connection c) {
@@ -74,12 +74,12 @@ public class BBDD {
 	 * ***Comprobamos que sea correcto el usuario y contraseña con la bbdd***
 	 */
 
-	public String consultarUsuarioContraseña(Usuario u) {
+	public String consultarUsuarioContrasenia(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
-		String usuariocontraseña = "";
+		String usuariocontrasenia = "";
 		String usuario = "";
-		String contraseña = "";
+		String contrasenia = "";
 		try {
 
 			con = conectar(con);
@@ -89,13 +89,13 @@ public class BBDD {
 					+ "' and password='" + u.getPassword() + "'");
 			rs.next();
 			usuario = rs.getString(1);
-			contraseña = rs.getString(2);
-			usuariocontraseña = usuario + contraseña;
+			contrasenia = rs.getString(2);
+			usuariocontrasenia = usuario + contrasenia;
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return usuariocontraseña;
+		return usuariocontrasenia;
 	}
 
 	public int consultarIdUsuario(Usuario u) {

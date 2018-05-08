@@ -9,10 +9,10 @@ public class Usuario {
 
 	}
 
-	public Usuario(String usuario, String contraseña) {
+	public Usuario(String usuario, String contrasenia) {
 		super();
 		this.user = usuario;
-		this.password = contraseña;
+		this.password = contrasenia;
 	}
 
 	public String getUser() {

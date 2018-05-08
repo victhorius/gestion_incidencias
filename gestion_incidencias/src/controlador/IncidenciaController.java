@@ -7,6 +7,12 @@ import modelo.BBDD;
 import modelo.Incidencia;
 import vista.datosPantalla;
 
+/**
+ * Ejemplo de controlador
+ * 
+ * @author Miguel
+ *
+ */
 public class IncidenciaController {
 
 	static datosPantalla dp = new datosPantalla();
