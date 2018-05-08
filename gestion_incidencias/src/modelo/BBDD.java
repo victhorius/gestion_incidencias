@@ -21,7 +21,7 @@ public class BBDD {
 	 * devuelve.
 	 * 
 	 * @param c
-	 *            --> Es la conexion a comprobar.
+	 *            - Es la conexion a comprobar.
 	 * @return La conexion metida por parámetro ya evaluada.
 	 */
 	public Connection conectar(Connection c) {
@@ -39,35 +39,6 @@ public class BBDD {
 			e.printStackTrace();
 		}
 		return c;
-	}
-
-	public void registrarIncidencia(IncidenciasCreadas incidencia) {
-		Connection con = null;
-		con = conectar(con);
-		PreparedStatement stmt = null;
-
-		/**
-		 * ***INSERTAMOS INCIDENCIA***
-		 */
-
-		try {
-
-			stmt = con.prepareStatement("insert into incidencias (idusuario, idincidencia, comentario, fecha) values ("
-					+ incidencia.getIdusuario() + "," + incidencia.getIdincidencia() + ",'" + incidencia.getComentario()
-					+ "', NOW())");
-
-			stmt.executeUpdate();
-
-			/*
-			 * if (filaInsertada > 0) System.out.println("fila insertada");
-			 */
-
-			con.close();
-		} catch (
-
-		SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void registrarUsuario(Usuario u) {
@@ -103,12 +74,12 @@ public class BBDD {
 	 * ***Comprobamos que sea correcto el usuario y contraseña con la bbdd***
 	 */
 
-	public String consultarUsuarioContraseña(Usuario u) {
+	public String consultarUsuarioContrasenia(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
-		String usuariocontraseña = "";
+		String usuariocontrasenia = "";
 		String usuario = "";
-		String contraseña = "";
+		String contrasenia = "";
 		try {
 
 			con = conectar(con);
@@ -118,13 +89,13 @@ public class BBDD {
 					+ "' and password='" + u.getPassword() + "'");
 			rs.next();
 			usuario = rs.getString(1);
-			contraseña = rs.getString(2);
-			usuariocontraseña = usuario + contraseña;
+			contrasenia = rs.getString(2);
+			usuariocontrasenia = usuario + contrasenia;
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return usuariocontraseña;
+		return usuariocontrasenia;
 	}
 
 	public int consultarIdUsuario(Usuario u) {
@@ -175,8 +146,8 @@ public class BBDD {
 	 * con = conectar(con);
 	 * 
 	 * stmt = con.createStatement(); ResultSet rs =
-	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" +
-	 * tipo + "'"); while (rs.next()) { subtipo = rs.getString(1);
+	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo +
+	 * "'"); while (rs.next()) { subtipo = rs.getString(1);
 	 * System.out.println(subtipo); } con.close(); } catch (SQLException e) {
 	 * e.printStackTrace(); } return tipo; }
 	 */
