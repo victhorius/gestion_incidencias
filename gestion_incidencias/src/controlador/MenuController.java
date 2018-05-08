@@ -35,7 +35,7 @@ public class MenuController {
 				u.setId(c.consultarIdUsuario(u));
 				switch (opcion2) {
 				case 1:
-					c.registrarIncidencia(dp.menuCrearIncidencia(ic.crearIncidencia(), u));
+					dp.menuCrearIncidencia(ic.crearIncidencia(), u);
 					break;
 
 				default:
@@ -43,7 +43,7 @@ public class MenuController {
 				}
 			}
 		case 3:
-			System.out.println("Adios");
+			System.out.println("Adiós");
 			System.exit(0);
 			break;
 
