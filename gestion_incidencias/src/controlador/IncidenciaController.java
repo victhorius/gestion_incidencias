@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import modelo.BBDD;
 import modelo.Incidencia;
-import vista.datosPantalla;
 
 /**
  * Ejemplo de controlador

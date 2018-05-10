@@ -9,26 +9,45 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class InterfazController implements ActionListener, MouseListener, KeyListener, FocusListener {
+	private UsuarioController uc;
 
-	private TextField user;
+	private JTextField user;
 	JPasswordField password;
 
 	public InterfazController() {
 
 	}
 
-	public InterfazController(TextField user, JPasswordField password) {
-		user.getText();
-		password.getPassword();
+	public InterfazController(JTextField user, JPasswordField password) {
+		this.user = user;
+		this.password = password;
+
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		Object b = e.getActionCommand();
+		String u = user.getText();
+		String pw = password.getPassword().toString();
+		JOptionPane.showMessageDialog(null, u + pw);
+		if (b.equals("acceder")) {
+			if (uc.Login(u, pw) == true) {
+				JOptionPane.showMessageDialog(null, "conectado");
+
+			} else {
+				JOptionPane.showMessageDialog(null, "no conectado");
+			}
+		}
+		if (b.equals("registrar")) {
+
+			JOptionPane.showMessageDialog(null, "registrar");
+
+		}
 
 	}
 

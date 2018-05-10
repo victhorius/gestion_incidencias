@@ -2,7 +2,6 @@ package controlador;
 
 import modelo.BBDD;
 import modelo.Usuario;
-import vista.datosPantalla;
 
 public class MenuController {
 

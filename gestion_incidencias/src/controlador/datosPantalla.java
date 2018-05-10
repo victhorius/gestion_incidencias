@@ -1,4 +1,4 @@
-package vista;
+package controlador;
 
 import java.util.ArrayList;
 import java.util.Calendar;
