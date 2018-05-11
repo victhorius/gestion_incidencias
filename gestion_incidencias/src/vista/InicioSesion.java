@@ -1,24 +1,19 @@
 package vista;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Color;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class InicioSesion extends JFrame implements ActionListener {
+import controlador.InterfazController;
+
+public class InicioSesion extends JFrame {
 
 	private JLabel l1, l2;
-	private JTextField tf1;
+	private JTextField tf1, passwordField;
 	private JButton b1, b2;
-	private JPasswordField passwordField;
 	private JLabel lblaunNoTienes;
 
 	public InicioSesion() {
@@ -51,18 +46,16 @@ public class InicioSesion extends JFrame implements ActionListener {
 		lblaunNoTienes.setBounds(12, 304, 242, 50);
 		tf1 = new JTextField();
 		tf1.setBounds(12, 81, 363, 31);
-		// tf1.addActionListener(new Principal(tf1));
-		passwordField = new JPasswordField();
+		passwordField = new JTextField();
 		passwordField.setBounds(12, 175, 363, 31);
-		// passwordField.addActionListener;
 		b1 = new JButton("Acceder");
 		b1.setActionCommand("acceder");
-		b1.addActionListener(this);
+		b1.addActionListener(new InterfazController(tf1, passwordField));
 		b1.setBounds(134, 234, 130, 50);
 		b1.setFont(f1);
 		b2 = new JButton("Registrate aqui");
 		b2.setActionCommand("registrar");
-		b2.addActionListener(this);
+		b2.addActionListener(new InterfazController());
 		b2.setForeground(Color.BLUE);
 		b2.setBounds(238, 304, 169, 50);
 		b2.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
@@ -76,30 +69,4 @@ public class InicioSesion extends JFrame implements ActionListener {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object b = e.getActionCommand();
-		// String u = user.getText();
-		// String pw = password.getPassword().toString();
-		JOptionPane.showMessageDialog(null, "hola");
-		if (b.equals("acceder")) {
-			/*
-			 * if (uc.Login(u, pw) == true) { JOptionPane.showMessageDialog(null,
-			 * "conectado");
-			 * 
-			 * } else { JOptionPane.showMessageDialog(null, "no conectado"); }
-			 */ }
-		if (b.equals("registrar")) {
-
-			JOptionPane.showMessageDialog(null, "registrar");
-
-		}
-
-	}
-
-	public static void main(String[] args) {
-
-		InicioSesion log = new InicioSesion();
-		log.setVisible(true);
-	}
 }

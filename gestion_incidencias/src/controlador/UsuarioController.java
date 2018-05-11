@@ -1,5 +1,12 @@
 package controlador;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
+
 import modelo.BBDD;
 import modelo.Usuario;
 
@@ -21,7 +28,6 @@ public class UsuarioController {
 		String usuariopw = user + pw;
 		if (usuariopw.equals(c.consultarUsuarioContrasenia(u))) {
 			System.out.println("LOGIN CORRECTO");
-			u.setId(c.consultarIdUsuario(u));
 			login = true;
 		} else {
 			System.out.println("LOGIN INCORRECTO");
@@ -29,4 +35,5 @@ public class UsuarioController {
 		}
 		return login;
 	}
+
 }

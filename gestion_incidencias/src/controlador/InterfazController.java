@@ -1,6 +1,5 @@
 package controlador;
 
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -10,20 +9,22 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import vista.InicioSesion;
+import vista.Interfaz;
+import vista.Registro;
 
 public class InterfazController implements ActionListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc;
 
-	private JTextField user;
-	JPasswordField password;
+	private JTextField user, password;
 
 	public InterfazController() {
 
 	}
 
-	public InterfazController(JTextField user, JPasswordField password) {
+	public InterfazController(JTextField user, JTextField password) {
 		this.user = user;
 		this.password = password;
 
@@ -33,19 +34,24 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 	public void actionPerformed(ActionEvent e) {
 		Object b = e.getActionCommand();
 		String u = user.getText();
-		String pw = password.getPassword().toString();
-		JOptionPane.showMessageDialog(null, u + pw);
+		String pw = password.getText();
+		JOptionPane.showMessageDialog(null, (u + pw));
 		if (b.equals("acceder")) {
 			if (uc.Login(u, pw) == true) {
-				JOptionPane.showMessageDialog(null, "conectado");
+				JOptionPane.showMessageDialog(null, "Login correcto");
+				Interfaz i = new Interfaz();
+				i.setVisible(true);
 
 			} else {
-				JOptionPane.showMessageDialog(null, "no conectado");
+				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+				InicioSesion log = new InicioSesion();
+				log.setVisible(true);
 			}
 		}
 		if (b.equals("registrar")) {
-
 			JOptionPane.showMessageDialog(null, "registrar");
+			Registro frame = new Registro();
+			frame.setVisible(true);
 
 		}
 

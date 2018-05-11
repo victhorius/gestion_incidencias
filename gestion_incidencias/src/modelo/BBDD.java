@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /**
  * Esta clase representa la conexion y las consultas, insercion y modificaciones
  * en la base de datos.
@@ -91,6 +93,7 @@ public class BBDD {
 			usuario = rs.getString(1);
 			contrasenia = rs.getString(2);
 			usuariocontrasenia = usuario + contrasenia;
+			
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

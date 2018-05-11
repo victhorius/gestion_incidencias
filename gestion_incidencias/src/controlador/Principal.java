@@ -4,7 +4,7 @@ import vista.InicioSesion;
 
 public class Principal {
 	public static void main(String[] args) {
-		// UsuarioController uc = new UsuarioController();
+		UsuarioController uc = new UsuarioController();
 		// IncidenciaController ic = new IncidenciaController();
 		// datosPantalla dp = new datosPantalla();
 

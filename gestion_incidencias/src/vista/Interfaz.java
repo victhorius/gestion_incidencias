@@ -71,9 +71,4 @@ public class Interfaz extends JFrame {
 		getContentPane().add(btnCerrarSesion);
 
 	}
-
-	public static void main(String[] args) {
-		Interfaz i = new Interfaz();
-		i.setVisible(true);
-	}
 }
