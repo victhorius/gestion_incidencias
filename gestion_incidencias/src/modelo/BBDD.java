@@ -178,4 +178,39 @@ public class BBDD {
 		return incidencias;
 	}
 
+	
+	
+	public void registarIncidencia(IncidenciasCreadas ic) {
+		Connection con = null;
+		con = conectar(con);
+		PreparedStatement stmt = null;
+
+		/**
+		 * ***INSERTAMOS USUARIO***
+		 */
+
+		try {
+
+			stmt = con.prepareStatement("insert into incidencias (idusuario,idincidencia,comentario) values (?,?,?)");
+			stmt.setInt(1, ic.getIdusuario());
+			stmt.setInt(2, ic.getIdincidencia() );
+			stmt.setString(3, ic.getComentario());
+			
+
+			stmt.executeUpdate();
+
+			/*
+			 * if (filaInsertada > 0) System.out.println("fila insertada");
+			 */
+
+			con.close();
+		} catch (
+
+		SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+
+

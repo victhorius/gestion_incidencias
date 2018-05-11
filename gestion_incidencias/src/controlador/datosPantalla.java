@@ -99,7 +99,7 @@ public class datosPantalla {
 	 *            -Es el usuario que crea la incidencia.
 	 */
 
-	public void menuCrearIncidencia(ArrayList<Incidencia> i, Usuario u) {
+	public IncidenciasCreadas menuCrearIncidencia(ArrayList<Incidencia> i, Usuario u) {
 
 		System.out.println("Selecciona tipo de incidencias a crear");
 
@@ -158,7 +158,16 @@ public class datosPantalla {
 		incidencia.setFecha(Calendar.getInstance());
 		incidencia.setIdincidencia(idincidencia);
 		incidencia.setIdusuario(u.getId());
+		
 		System.out.println(incidencia.toString());
+		
+		return incidencia;
+		
 	}
 
+	public void menuColsultarEstadoIncidencias(Usuario u) {
+		
+		
+		
+	}
 }
