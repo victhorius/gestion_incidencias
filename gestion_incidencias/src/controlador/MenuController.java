@@ -35,7 +35,11 @@ public class MenuController {
 				switch (opcion2) {
 				case 1:
 					dp.menuCrearIncidencia(ic.crearIncidencia(), u);
+					c.registarIncidencia(dp.menuCrearIncidencia(ic.crearIncidencia(), u));
 					break;
+					
+				case 2:
+					dp.menuColsultarEstadoIncidencias(u);
 
 				default:
 					break;
