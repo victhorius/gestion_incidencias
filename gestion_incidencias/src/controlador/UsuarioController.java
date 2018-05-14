@@ -11,8 +11,13 @@ import modelo.BBDD;
 import modelo.Usuario;
 
 public class UsuarioController {
-	static BBDD c = new BBDD();
-	static datosPantalla dp = new datosPantalla();
+	BBDD c;
+	datosPantalla dp;
+
+	public UsuarioController() {
+		c = new BBDD();
+		dp = new datosPantalla();
+	}
 
 	public void Registrarse() {
 		String usuario = dp.introducirUsuario();

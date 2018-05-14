@@ -16,7 +16,7 @@ import vista.Interfaz;
 import vista.Registro;
 
 public class InterfazController implements ActionListener, MouseListener, KeyListener, FocusListener {
-	private UsuarioController uc;
+	private UsuarioController uc=new UsuarioController();
 
 	private JTextField user, password;
 
