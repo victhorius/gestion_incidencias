@@ -49,7 +49,7 @@ public class InicioSesion extends JFrame {
 		passwordField = new JTextField();
 		passwordField.setBounds(12, 175, 363, 31);
 		b1 = new JButton("Acceder");
-		b1.setActionCommand("acceder");
+		b1.setActionCommand("log");
 		b1.addActionListener(new InterfazController(tf1, passwordField));
 		b1.setBounds(134, 234, 130, 50);
 		b1.setFont(f1);

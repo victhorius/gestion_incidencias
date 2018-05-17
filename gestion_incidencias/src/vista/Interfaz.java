@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
 public class Interfaz extends JFrame {
+	
 	private JLabel lblBienvenidoUsuario;
 	private JLabel lblqueQuieresHacer;
 	private JButton btnCrearIncidencia;
@@ -71,4 +72,5 @@ public class Interfaz extends JFrame {
 		getContentPane().add(btnCerrarSesion);
 
 	}
+	
 }

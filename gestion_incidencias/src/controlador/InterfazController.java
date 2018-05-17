@@ -16,7 +16,7 @@ import vista.Interfaz;
 import vista.Registro;
 
 public class InterfazController implements ActionListener, MouseListener, KeyListener, FocusListener {
-	private UsuarioController uc=new UsuarioController();
+	private UsuarioController uc = new UsuarioController();
 
 	private JTextField user, password;
 
@@ -33,10 +33,11 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object b = e.getActionCommand();
-		String u = user.getText();
-		String pw = password.getText();
-		JOptionPane.showMessageDialog(null, (u + pw));
-		if (b.equals("acceder")) {
+
+		if (b.equals("log")) {
+			String u = user.getText();
+			String pw = password.getText();
+			JOptionPane.showMessageDialog(null, (u + pw));
 			if (uc.Login(u, pw) == true) {
 				JOptionPane.showMessageDialog(null, "Login correcto");
 				Interfaz i = new Interfaz();
@@ -50,11 +51,15 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 		}
 		if (b.equals("registrar")) {
 			JOptionPane.showMessageDialog(null, "registrar");
-			Registro frame = new Registro();
-			frame.setVisible(true);
+			Registro reg = new Registro();
+			reg.setVisible(true);
 
 		}
-
+		if (b.equals("accede")) {
+			JOptionPane.showMessageDialog(null, "A inicio de sesion");
+			InicioSesion log = new InicioSesion();
+			log.setVisible(true);
+		}
 	}
 
 	@Override

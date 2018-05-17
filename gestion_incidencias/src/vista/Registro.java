@@ -1,9 +1,11 @@
 package vista;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.InterfazController;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -15,12 +17,13 @@ import javax.swing.JButton;
 import java.awt.Color;
 
 public class Registro extends JFrame {
-
+private JLabel lblNombreUsuario,lblRegistrate, lblDireccin,lblCorreoElectronico,lblContrasea,lblyaTienesCuenta  ;
 	private JPanel contentPane;
 	private JTextField NombreUsuario;
 	private JPasswordField Contrasenia;
 	private JTextField CorreoElectronico;
 	private JTextField Direccion;
+	JButton btnAccedeAqu;
 
 	public Registro() {
 		super();
@@ -40,41 +43,45 @@ public class Registro extends JFrame {
 	}
 
 	public void inicializarComponentes() {
-		JLabel lblRegistrate = new JLabel("Registrate");
+		lblRegistrate = new JLabel("Registrate");
 		lblRegistrate.setFont(new Font("Tahoma", Font.BOLD, 20));
 
 		JPanel panel = new JPanel();
 
-		JLabel lblNombreUsuario = new JLabel("Nombre Usuario");
+		lblNombreUsuario = new JLabel("Nombre Usuario");
 		lblNombreUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		NombreUsuario = new JTextField();
 		NombreUsuario.setColumns(10);
 
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		lblContrasea = new JLabel("Contrasena");
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		Contrasenia = new JPasswordField();
 
-		JLabel lblCorreoElectronico = new JLabel("Correo Electr\u00F3nico");
+		lblCorreoElectronico = new JLabel("Correo Electronico");
 		lblCorreoElectronico.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		CorreoElectronico = new JTextField();
 		CorreoElectronico.setColumns(10);
 
-		JLabel lblDireccin = new JLabel("Direcci\u00F3n");
+		lblDireccin = new JLabel("Direccion");
 		lblDireccin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		Direccion = new JTextField();
 		Direccion.setColumns(10);
 
-		JLabel lblyaTienesCuenta = new JLabel("\u00BFYa tienes cuenta?");
+		lblyaTienesCuenta = new JLabel("Ya tienes cuenta?");
 		lblyaTienesCuenta.setFont(new Font("Tahoma", Font.BOLD, 16));
 
-		JButton btnAccedeAqu = new JButton("Accede aqu\u00ED");
+		btnAccedeAqu = new JButton("Accede aqui");
 		btnAccedeAqu.setForeground(Color.BLUE);
 		btnAccedeAqu.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		btnAccedeAqu.setActionCommand("accede");
+		btnAccedeAqu.addActionListener(new InterfazController());
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
+		
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
 				.createSequentialGroup()
 				.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
@@ -141,4 +148,5 @@ public class Registro extends JFrame {
 						.addGap(5)));
 		contentPane.setLayout(gl_contentPane);
 	}
+	
 }
