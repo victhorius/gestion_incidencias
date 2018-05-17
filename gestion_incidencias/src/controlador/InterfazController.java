@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import vista.InicioSesion;
 import vista.Interfaz;
 import vista.Registro;
@@ -38,16 +37,26 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 			String u = user.getText();
 			String pw = password.getText();
 			JOptionPane.showMessageDialog(null, (u + pw));
-			if (uc.Login(u, pw) == true) {
-				JOptionPane.showMessageDialog(null, "Login correcto");
-				Interfaz i = new Interfaz();
-				i.setVisible(true);
+			// control de excepciones por si el login no es correcto
+			try {
 
-			} else {
+				if (uc.Login(u, pw) == true) {
+					JOptionPane.showMessageDialog(null, "Login correcto");
+					Interfaz i = new Interfaz();
+					i.setVisible(true);
+
+				}
+
+			} catch (Exception e1) {
+
+				System.out.println("Error:" + e1.getMessage());
 				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+
 				InicioSesion log = new InicioSesion();
 				log.setVisible(true);
+
 			}
+
 		}
 		if (b.equals("registrar")) {
 			JOptionPane.showMessageDialog(null, "registrar");

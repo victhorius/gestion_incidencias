@@ -18,7 +18,7 @@ public class MenuController {
 		this.ic = ic;
 	}
 
-	public void ejecucionMenu(int opcion) {
+	public void ejecucionMenu(int opcion) throws Exception {
 		switch (opcion) {
 		case 1:
 			uc.Registrarse();
