@@ -8,8 +8,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import org.omg.PortableServer.ThreadPolicyOperations;
+
+import com.mysql.jdbc.exceptions.MySQLDataException;
 
 import vista.InicioSesion;
 import vista.Interfaz;
@@ -37,16 +43,30 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 		String pw = password.getText();
 		JOptionPane.showMessageDialog(null, (u + pw));
 		if (b.equals("acceder")) {
-			if (uc.Login(u, pw) == true) {
-				JOptionPane.showMessageDialog(null, "Login correcto");
-				Interfaz i = new Interfaz();
-				i.setVisible(true);
+			
+			//control de excepciones por si el login no es correcto
+			
+			try {
+				
+				if (uc.Login(u, pw) == true) {
+					JOptionPane.showMessageDialog(null, "Login correcto");
+					Interfaz i = new Interfaz();
+					i.setVisible(true);
 
-			} else {
+				} 
+				
+			} catch (Exception e1) {
+				
+				System.out.println("Error:"+e1.getMessage());
 				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+				
 				InicioSesion log = new InicioSesion();
 				log.setVisible(true);
+			
+				
 			}
+			
+			
 		}
 		if (b.equals("registrar")) {
 			JOptionPane.showMessageDialog(null, "registrar");

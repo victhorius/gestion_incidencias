@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -33,11 +34,19 @@ public class InterfazController2 implements ActionListener{
 		String pw = password.getPassword().toString();
 		JOptionPane.showMessageDialog(null, "hola");
 		if (b.equals("acceder")) {
-			if (uc.Login(u, pw) == true) {
-				JOptionPane.showMessageDialog(null, "conectado");
+			try {
+				if (uc.Login(u, pw) == true) {
+					JOptionPane.showMessageDialog(null, "conectado");
 
-			} else {
-				JOptionPane.showMessageDialog(null, "no conectado");
+				} else {
+					JOptionPane.showMessageDialog(null, "no conectado");
+				}
+			} catch (HeadlessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 		if (b.equals("registrar")) {

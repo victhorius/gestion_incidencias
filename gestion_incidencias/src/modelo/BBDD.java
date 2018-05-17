@@ -96,7 +96,7 @@ public class BBDD {
 			
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		return usuariocontrasenia;
 	}

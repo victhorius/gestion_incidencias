@@ -7,6 +7,8 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import org.omg.PortableServer.ThreadPolicyOperations;
+
 import modelo.BBDD;
 import modelo.Usuario;
 
@@ -27,7 +29,7 @@ public class UsuarioController {
 		c.registrarUsuario(u);
 	}
 
-	public boolean Login(String user, String pw) {
+	public boolean Login(String user, String pw) throws Exception {
 		boolean login = false;
 		Usuario u = new Usuario(user, pw);
 		String usuariopw = user + pw;
@@ -37,6 +39,8 @@ public class UsuarioController {
 		} else {
 			System.out.println("LOGIN INCORRECTO");
 			login = false;
+			throw new Exception("Usuario/contraseña incorrectos");
+		
 		}
 		return login;
 	}
