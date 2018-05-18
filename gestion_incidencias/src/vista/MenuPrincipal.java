@@ -47,13 +47,15 @@ public class MenuPrincipal extends JFrame {
 		btnCrearIncidencia.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		btnCrearIncidencia.setHorizontalAlignment(SwingConstants.LEADING);
 		btnCrearIncidencia.setBounds(59, 125, 279, 37);
-		getContentPane().add(btnCrearIncidencia);
+		btnCrearIncidencia.setActionCommand("crearIncidencia");
+		this.add(btnCrearIncidencia);
 
 		btnMostrarEstadoDe = new JButton("Mostrar estado de las incidencias");
 		btnMostrarEstadoDe.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		btnMostrarEstadoDe.setHorizontalAlignment(SwingConstants.LEADING);
 		btnMostrarEstadoDe.setBounds(59, 184, 279, 37);
-		getContentPane().add(btnMostrarEstadoDe);
+		btnMostrarEstadoDe.setActionCommand("mostrarEstadoIncidencias");
+		this.add(btnMostrarEstadoDe);
 
 		btnNewButton = new JButton("Editar Perfil");
 		btnNewButton.setFont(new Font("Tahoma", Font.ITALIC, 16));
