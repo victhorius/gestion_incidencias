@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import vista.InicioSesion;
-import vista.Interfaz;
+import vista.MenuPrincipal;
 import vista.Registro;
 
 public class InterfazController implements ActionListener, MouseListener, KeyListener, FocusListener {
@@ -42,7 +42,7 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 
 				if (uc.Login(u, pw) == true) {
 					JOptionPane.showMessageDialog(null, "Login correcto");
-					Interfaz i = new Interfaz();
+					MenuPrincipal i = new MenuPrincipal();
 					i.setVisible(true);
 
 				}

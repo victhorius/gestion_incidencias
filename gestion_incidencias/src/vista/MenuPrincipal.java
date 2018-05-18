@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class Interfaz extends JFrame {
+public class MenuPrincipal extends JFrame {
 	
 	private JLabel lblBienvenidoUsuario;
 	private JLabel lblqueQuieresHacer;
@@ -16,7 +16,7 @@ public class Interfaz extends JFrame {
 	private JButton btnSalir;
 	private JButton btnCerrarSesion;
 
-	public Interfaz() {
+	public MenuPrincipal() {
 		super();
 		inicializarFrame();
 		inicializarComponentes();
