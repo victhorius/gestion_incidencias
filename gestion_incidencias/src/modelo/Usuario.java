@@ -3,7 +3,7 @@ package modelo;
 public class Usuario {
 	private String user, password;
 	private int id;
-	private String direccion;
+	private String direccion, correoElectronico;
 
 	public Usuario() {
 
@@ -13,6 +13,14 @@ public class Usuario {
 		super();
 		this.user = usuario;
 		this.password = contrasenia;
+	}
+
+	public Usuario(String usuario, String contrasenia, String correoElectronico, String direccion) {
+		super();
+		this.user = usuario;
+		this.password = contrasenia;
+		this.correoElectronico = correoElectronico;
+		this.direccion = direccion;
 	}
 
 	public String getUser() {
