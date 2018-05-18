@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 
 public class Registro extends JFrame {
-private JLabel lblNombreUsuario,lblRegistrate, lblDireccin,lblCorreoElectronico,lblContrasea,lblyaTienesCuenta  ;
+	private JLabel lblNombreUsuario, lblRegistrate, lblDireccin, lblCorreoElectronico, lblContrasea, lblyaTienesCuenta;
 	private JPanel contentPane;
 	private JTextField NombreUsuario;
 	private JPasswordField Contrasenia;
@@ -79,9 +79,9 @@ private JLabel lblNombreUsuario,lblRegistrate, lblDireccin,lblCorreoElectronico,
 		btnAccedeAqu.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		btnAccedeAqu.setActionCommand("accede");
 		btnAccedeAqu.addActionListener(new InterfazController());
-		
+
 		GroupLayout gl_panel = new GroupLayout(panel);
-		
+
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
 				.createSequentialGroup()
 				.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
@@ -148,5 +148,4 @@ private JLabel lblNombreUsuario,lblRegistrate, lblDireccin,lblCorreoElectronico,
 						.addGap(5)));
 		contentPane.setLayout(gl_contentPane);
 	}
-	
 }
