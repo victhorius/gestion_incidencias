@@ -4,18 +4,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import com.mysql.fabric.xmlrpc.base.Array;
+
+import modelo.Usuario;
 import vista.InicioSesion;
+import vista.MenuCrearIncidencia;
 import vista.MenuPrincipal;
 import vista.Registro;
 
-public class InterfazController implements ActionListener, MouseListener, KeyListener, FocusListener {
+public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc = new UsuarioController();
+	private IncidenciaController ic = new IncidenciaController();
+	private Usuario us = new Usuario();
 
 	private JTextField user, password;
 
@@ -37,6 +48,7 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 			String u = user.getText();
 			String pw = password.getText();
 			JOptionPane.showMessageDialog(null, (u + pw));
+
 			// control de excepciones por si el login no es correcto
 			try {
 
@@ -44,6 +56,8 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 					JOptionPane.showMessageDialog(null, "Login correcto");
 					MenuPrincipal i = new MenuPrincipal();
 					i.setVisible(true);
+					us.setUser(u);
+					us.setPassword(pw);
 
 				}
 
@@ -58,6 +72,9 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 			}
 
 		}
+		
+
+		
 		if (b.equals("registrar")) {
 			JOptionPane.showMessageDialog(null, "registrar");
 			Registro reg = new Registro();
@@ -68,6 +85,23 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 			JOptionPane.showMessageDialog(null, "A inicio de sesion");
 			InicioSesion log = new InicioSesion();
 			log.setVisible(true);
+		}
+
+		if (b.equals("crearIncidencia")) {
+			
+						
+			
+			MenuCrearIncidencia m = new MenuCrearIncidencia();
+			m.llenarComboTipo(ic.crearIncidencia(),us);
+			
+			m.setVisible(true);
+			//recupero la opcion seleccionada del comboTipo
+			//metodo del comboSubtipo
+			//recuperar todo y crear incidencia
+			
+			
+			
+
 		}
 	}
 
@@ -129,6 +163,14 @@ public class InterfazController implements ActionListener, MouseListener, KeyLis
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
+	}
+
+	
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		
+		//para que se actualice al combo de Subtipos con cada cambio en el de tipos
+		
 	}
 
 }

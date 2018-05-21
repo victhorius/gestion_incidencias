@@ -4,6 +4,9 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import controlador.InterfazController;
+
 import javax.swing.JButton;
 
 public class MenuPrincipal extends JFrame {
@@ -46,6 +49,7 @@ public class MenuPrincipal extends JFrame {
 		btnCrearIncidencia.setHorizontalAlignment(SwingConstants.LEADING);
 		btnCrearIncidencia.setBounds(59, 125, 279, 37);
 		btnCrearIncidencia.setActionCommand("crearIncidencia");
+		btnCrearIncidencia.addActionListener(new InterfazController());
 
 		btnMostrarEstadoDe = new JButton("Mostrar estado de las incidencias");
 		btnMostrarEstadoDe.setFont(new Font("Tahoma", Font.ITALIC, 16));
