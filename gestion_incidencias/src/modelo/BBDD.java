@@ -178,6 +178,71 @@ public class BBDD {
 		}
 		return incidencias;
 	}
+	
+	public ArrayList<String> consultarTipo() {
+		Connection con = null;
+		Statement stmt = null;
+		String tipo;
+		ArrayList<String> tipos = new ArrayList<String>();
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT DISTINCT tipo FROM tipo_incidencia");
+			while (rs.next()) {
+				tipo = rs.getString(1);
+				tipos.add(tipo);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tipos;
+	}
+	
+	public ArrayList<String> consultarSubTipo(String tipo) {
+		Connection con = null;
+		Statement stmt = null;
+		String subTipo;
+		ArrayList<String> subTipos = new ArrayList<String>();
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT subtipo from tipo_incidencia where tipo = '"+tipo+"'");
+			while (rs.next()) {
+				subTipo = rs.getString(1);
+				subTipos.add(subTipo);
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return subTipos;
+	}
+	
+	public int consultarId(String subTipo) {
+		Connection con = null;
+		Statement stmt = null;
+		int id=0;
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id from tipo_incidencia where subtipo = '"+subTipo+"'");
+			while (rs.next()) {
+				id= rs.getInt(1);
+				
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
 
 	public void registarIncidencia(IncidenciasCreadas ic) {
 		Connection con = null;

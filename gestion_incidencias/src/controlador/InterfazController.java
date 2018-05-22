@@ -16,7 +16,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.mysql.fabric.xmlrpc.base.Array;
+import com.sun.prism.impl.shape.OpenPiscesRasterizer;
 
+import modelo.BBDD;
+import modelo.IncidenciasCreadas;
 import modelo.Usuario;
 import vista.InicioSesion;
 import vista.MenuCrearIncidencia;
@@ -25,9 +28,10 @@ import vista.Registro;
 
 public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc = new UsuarioController();
-	private IncidenciaController ic = new IncidenciaController();
+	//private IncidenciaController ic = new IncidenciaController();
+	private IncidenciasCreadas ic;
 	private Usuario us = new Usuario();
-
+	BBDD c;
 	private JTextField user, password;
 
 	public InterfazController() {
@@ -89,21 +93,44 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 		if (b.equals("crearIncidencia")) {
 			
-						
+			   
+				String opcionComboTipo,opcionComboSubTipo;	
+				
 			
 			MenuCrearIncidencia m = new MenuCrearIncidencia();
-			m.llenarComboTipo(ic.crearIncidencia(),us);
-			
 			m.setVisible(true);
-			//recupero la opcion seleccionada del comboTipo
-			//metodo del comboSubtipo
-			//recuperar todo y crear incidencia
-			
+			c = new BBDD();
+			//retorna el String con el tipo, lo que ocurre que siempre me
+			//selecciona el primer elemento del comboBox
+			m.llenarComboTipo(c.consultarTipo());
+			opcionComboTipo = m.obtenerComboTipo();
+			m.llenarComboSubTipo(c.consultarSubTipo(opcionComboTipo));
+			opcionComboSubTipo = m.obtenerComboSubTipo();
 			
 			
 
-		}
+			
+			if (b.equals("aceptar")) {
+				
+				String comentario;
+				int idIncidencia;
+			
+				comentario = m.obtenerComentario();
+				idIncidencia = c.consultarId(opcionComboSubTipo);
+				
+				//hay que recuperar el id del usuario conectado, pongo 1 de prueba
+				ic = new IncidenciasCreadas();
+				ic.setIdusuario(1);
+				ic.setIdincidencia(idIncidencia);
+				ic.setComentario(comentario);
+				
+				c.registarIncidencia(ic);
+				
+				
+			}
+		
 	}
+}
 
 	@Override
 	public void focusGained(FocusEvent arg0) {
@@ -165,12 +192,11 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 	}
 
-	
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		
-		//para que se actualice al combo de Subtipos con cada cambio en el de tipos
-		
+	
+		// para que se actualice al combo de Subtipos con cada cambio en el de tipos
+
 	}
 
 }
