@@ -28,11 +28,12 @@ import vista.Registro;
 
 public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc = new UsuarioController();
-	//private IncidenciaController ic = new IncidenciaController();
+	// private IncidenciaController ic = new IncidenciaController();
 	private IncidenciasCreadas ic;
 	private Usuario us = new Usuario();
 	BBDD c;
 	private JTextField user, password;
+	private JTextField nombreUsuario, contrasenia, correoElectronico, direccion;
 
 	public InterfazController() {
 
@@ -42,6 +43,14 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 		this.user = user;
 		this.password = password;
 
+	}
+
+	public InterfazController(JTextField nombreUsuario, JTextField contrasenia, JTextField correoElectronico,
+			JTextField direccion) {
+		this.nombreUsuario = nombreUsuario;
+		this.contrasenia = contrasenia;
+		this.correoElectronico = correoElectronico;
+		this.direccion = direccion;
 	}
 
 	@Override
@@ -58,8 +67,7 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 				if (uc.Login(u, pw) == true) {
 					JOptionPane.showMessageDialog(null, "Login correcto");
-					MenuPrincipal i = new MenuPrincipal();
-					i.setVisible(true);
+					new MenuPrincipal().setVisible(true);
 					us.setUser(u);
 					us.setPassword(pw);
 
@@ -69,68 +77,70 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 				System.out.println("Error:" + e1.getMessage());
 				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
-
-				InicioSesion log = new InicioSesion();
-				log.setVisible(true);
+				new InicioSesion().setVisible(true);
 
 			}
 
 		}
-		
 
-		
 		if (b.equals("registrar")) {
 			JOptionPane.showMessageDialog(null, "registrar");
-			Registro reg = new Registro();
-			reg.setVisible(true);
+			new Registro().setVisible(true);
+
+		}
+		if (b.equals("registro")) {
+			String nomU = nombreUsuario.getText();
+			String conU = contrasenia.getText();
+			String coElU = correoElectronico.getText();
+			String dirU = direccion.getText();
+			Usuario u = new Usuario();
+			u.setUser(nomU);
+			u.setPassword(conU);
+			u.setCorreoElectronico(coElU);
+			u.setDireccion(dirU);
+			c.registrarUsuario(u);
+			JOptionPane.showMessageDialog(null, "registrando");
 
 		}
 		if (b.equals("accede")) {
 			JOptionPane.showMessageDialog(null, "A inicio de sesion");
-			InicioSesion log = new InicioSesion();
-			log.setVisible(true);
+			new InicioSesion().setVisible(true);
 		}
 
 		if (b.equals("crearIncidencia")) {
-			
-			   
-				String opcionComboTipo,opcionComboSubTipo;	
-				
-			
+
+			String opcionComboTipo, opcionComboSubTipo;
+
 			MenuCrearIncidencia m = new MenuCrearIncidencia();
 			m.setVisible(true);
 			c = new BBDD();
-			//retorna el String con el tipo, lo que ocurre que siempre me
-			//selecciona el primer elemento del comboBox
+			// retorna el String con el tipo, lo que ocurre que siempre me
+			// selecciona el primer elemento del comboBox
 			m.llenarComboTipo(c.consultarTipo());
 			opcionComboTipo = m.obtenerComboTipo();
 			m.llenarComboSubTipo(c.consultarSubTipo(opcionComboTipo));
 			opcionComboSubTipo = m.obtenerComboSubTipo();
-			
-			
 
-			
 			if (b.equals("aceptar")) {
-				
+
 				String comentario;
 				int idIncidencia;
-			
+
 				comentario = m.obtenerComentario();
 				idIncidencia = c.consultarId(opcionComboSubTipo);
-				
-				//hay que recuperar el id del usuario conectado, pongo 1 de prueba
+
+				// hay que recuperar el id del usuario conectado, pongo 1 de prueba
 				ic = new IncidenciasCreadas();
 				ic.setIdusuario(1);
 				ic.setIdincidencia(idIncidencia);
 				ic.setComentario(comentario);
-				
+
 				c.registarIncidencia(ic);
-				
-				
+
 			}
-		
+
+		}
 	}
-}
 
 	@Override
 	public void focusGained(FocusEvent arg0) {
@@ -194,7 +204,7 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-	
+
 		// para que se actualice al combo de Subtipos con cada cambio en el de tipos
 
 	}

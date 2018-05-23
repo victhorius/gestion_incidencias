@@ -1,8 +1,6 @@
 package vista;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import controlador.InterfazController;
 
@@ -10,20 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Font;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.Color;
 
 public class Registro extends JFrame {
 	private JLabel lblNombreUsuario, lblRegistrate, lblDireccin, lblCorreoElectronico, lblContrasea, lblyaTienesCuenta;
-	private JPanel contentPane;
-	private JTextField NombreUsuario;
-	private JPasswordField Contrasenia;
-	private JTextField CorreoElectronico;
-	private JTextField Direccion;
-	JButton btnAccedeAqu;
+	private JTextField CorreoElectronico, Direccion, NombreUsuario, Contrasenia;
+	private JButton btnAccedeAqu, btnRegistrarse;
 
 	public Registro() {
 		super();
@@ -36,116 +27,82 @@ public class Registro extends JFrame {
 		new JFrame();
 		this.setTitle("Bienvenido a la Comunidad");
 		this.setSize(445, 550);
+		getContentPane().setLayout(null);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+
 	}
 
 	public void inicializarComponentes() {
+
 		lblRegistrate = new JLabel("Registrate");
+		lblRegistrate.setBounds(155, 0, 130, 45);
 		lblRegistrate.setFont(new Font("Tahoma", Font.BOLD, 20));
 
-		JPanel panel = new JPanel();
-
 		lblNombreUsuario = new JLabel("Nombre Usuario");
+		lblNombreUsuario.setBounds(12, 40, 350, 35);
 		lblNombreUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		NombreUsuario = new JTextField();
+		NombreUsuario.setBounds(12, 80, 350, 35);
 		NombreUsuario.setColumns(10);
 
 		lblContrasea = new JLabel("Contrasena");
+		lblContrasea.setBounds(12, 120, 350, 35);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
-		Contrasenia = new JPasswordField();
+		Contrasenia = new JTextField();
+		Contrasenia.setBounds(12, 160, 350, 35);
+		Contrasenia.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		lblCorreoElectronico = new JLabel("Correo Electronico");
+		lblCorreoElectronico.setBounds(12, 200, 350, 35);
 		lblCorreoElectronico.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		CorreoElectronico = new JTextField();
+		CorreoElectronico.setBounds(12, 240, 350, 35);
 		CorreoElectronico.setColumns(10);
 
 		lblDireccin = new JLabel("Direccion");
+		lblDireccin.setBounds(12, 280, 350, 35);
 		lblDireccin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
 		Direccion = new JTextField();
+		Direccion.setBounds(12, 320, 350, 35);
 		Direccion.setColumns(10);
 
+		btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setBounds(50, 380, 275, 50);
+		btnRegistrarse.setForeground(Color.BLUE);
+		btnRegistrarse.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
+		btnRegistrarse.setActionCommand("registro");
+		btnRegistrarse
+				.addActionListener(new InterfazController(NombreUsuario, Contrasenia, CorreoElectronico, Direccion));
+
 		lblyaTienesCuenta = new JLabel("Ya tienes cuenta?");
+		lblyaTienesCuenta.setBounds(12, 450, 170, 35);
 		lblyaTienesCuenta.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 		btnAccedeAqu = new JButton("Accede aqui");
+		btnAccedeAqu.setBounds(235, 450, 170, 35);
 		btnAccedeAqu.setForeground(Color.BLUE);
 		btnAccedeAqu.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 16));
 		btnAccedeAqu.setActionCommand("accede");
 		btnAccedeAqu.addActionListener(new InterfazController());
 
-		GroupLayout gl_panel = new GroupLayout(panel);
+		this.add(lblRegistrate);
+		this.add(lblNombreUsuario);
+		this.add(NombreUsuario);
+		this.add(lblContrasea);
+		this.add(Contrasenia);
+		this.add(lblCorreoElectronico);
+		this.add(CorreoElectronico);
+		this.add(lblDireccin);
+		this.add(Direccion);
+		this.add(btnRegistrarse);
+		this.add(lblyaTienesCuenta);
+		this.add(btnAccedeAqu);
 
-		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
-				.createSequentialGroup()
-				.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-						.addGroup(gl_panel.createSequentialGroup().addContainerGap().addComponent(CorreoElectronico))
-						.addGroup(gl_panel.createSequentialGroup().addContainerGap().addComponent(Contrasenia))
-						.addGroup(gl_panel.createSequentialGroup().addContainerGap().addComponent(NombreUsuario))
-						.addGroup(Alignment.LEADING,
-								gl_panel.createSequentialGroup().addGap(12).addComponent(lblContrasea,
-										GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING,
-								gl_panel.createSequentialGroup().addContainerGap().addComponent(lblDireccin,
-										GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING,
-								gl_panel.createSequentialGroup().addContainerGap().addComponent(lblCorreoElectronico,
-										GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING,
-								gl_panel.createSequentialGroup().addContainerGap().addComponent(lblNombreUsuario,
-										GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup().addContainerGap()
-								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panel.createSequentialGroup().addGap(10)
-												.addComponent(lblyaTienesCuenta).addGap(18).addComponent(btnAccedeAqu))
-										.addComponent(Direccion))))
-				.addGap(9)));
-		gl_panel.setVerticalGroup(gl_panel.createParallelGroup(Alignment.LEADING).addGroup(gl_panel
-				.createSequentialGroup()
-				.addComponent(lblNombreUsuario, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(NombreUsuario, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(lblContrasea, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(Contrasenia, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addComponent(lblCorreoElectronico, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-				.addGap(12).addComponent(CorreoElectronico, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(lblDireccin, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addComponent(Direccion, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblyaTienesCuenta, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnAccedeAqu))
-				.addContainerGap()));
-		panel.setLayout(gl_panel);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane
-				.setHorizontalGroup(
-						gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-										.addComponent(lblRegistrate, GroupLayout.PREFERRED_SIZE, 248,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap(162, Short.MAX_VALUE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(panel,
-												GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-										.addGap(40)));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(lblRegistrate, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(panel, GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGap(5)));
-		contentPane.setLayout(gl_contentPane);
 	}
+
 }

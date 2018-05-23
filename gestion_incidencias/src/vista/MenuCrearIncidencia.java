@@ -119,14 +119,14 @@ public class MenuCrearIncidencia extends JFrame {
 		return comboSubtipo.getItemAt(comboTipo.getSelectedIndex());
 
 	}
-	
+
 	public String obtenerComentario() {
 		String comentario;
-		
-		comentario=txtComentario.getText();
-				
+
+		comentario = txtComentario.getText();
+
 		return comentario;
-		
+
 	}
 
 	public static void main(String[] args) {

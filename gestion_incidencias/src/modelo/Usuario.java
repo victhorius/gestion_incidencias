@@ -47,6 +47,14 @@ public class Usuario {
 		this.id = id;
 	}
 
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
 	public String getDireccion() {
 		return direccion;
 	}

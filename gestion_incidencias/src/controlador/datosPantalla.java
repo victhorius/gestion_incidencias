@@ -90,6 +90,18 @@ public class datosPantalla {
 		return pw;
 	}
 
+	public String introducirCorreo() {
+		System.out.println("CorreoElectronico:");
+		String correo = sc.next();
+		return correo;
+	}
+
+	public String introducirDireccion() {
+		System.out.println("Direccion:");
+		String direccion = sc.next();
+		return direccion;
+	}
+
 	/**
 	 * Muestra por pantalla Menús de los tipos y subtipos de incidencias.
 	 * 
@@ -158,16 +170,14 @@ public class datosPantalla {
 		incidencia.setFecha(Calendar.getInstance());
 		incidencia.setIdincidencia(idincidencia);
 		incidencia.setIdusuario(u.getId());
-		
+
 		System.out.println(incidencia.toString());
-		
+
 		return incidencia;
-		
+
 	}
 
 	public void menuColsultarEstadoIncidencias(Usuario u) {
-		
-		
-		
+
 	}
 }

@@ -15,8 +15,10 @@ public class UsuarioController {
 	public void Registrarse() {
 		String usuario = dp.introducirUsuario();
 		String pw = dp.introducirPassword();
-		// String correoE=
-		Usuario u = new Usuario(usuario, pw);
+		String correo = dp.introducirCorreo();
+		String direccion = dp.introducirDireccion();
+
+		Usuario u = new Usuario(usuario, pw, correo, direccion);
 		c.registrarUsuario(u);
 	}
 

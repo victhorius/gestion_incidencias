@@ -11,8 +11,7 @@ public class Principal {
 		 * MenuController mc = new MenuController(dp); int opcion = dp.menuPrincipal();
 		 * mc.ejecucionMenu(opcion);
 		 */
-		InicioSesion log = new InicioSesion();
-		log.setVisible(true);
+		new InicioSesion().setVisible(true);
 
 	}
 }

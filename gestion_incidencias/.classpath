@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_144"/>
-	<classpathentry kind="lib" path="C:/Users/Viclanda/Dropbox/DAW/Programación/Java/Tema 9 - Utilización de bases de datos_JDBC/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Miguel/Desktop/Modulos2017_2018/Programacion/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

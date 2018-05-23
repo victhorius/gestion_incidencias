@@ -52,10 +52,11 @@ public class BBDD {
 
 		try {
 
-			stmt = con.prepareStatement("insert into usuarios (usuario,password) values (?,?)");
+			stmt = con.prepareStatement("insert into usuarios (usuario,password,correo,direccion) values (?,?,?,?)");
 			stmt.setString(1, u.getUser());
 			stmt.setString(2, u.getPassword());
-
+			stmt.setString(3, u.getCorreoElectronico());
+			stmt.setString(4, u.getDireccion());
 			stmt.executeUpdate();
 
 			/*
@@ -178,7 +179,7 @@ public class BBDD {
 		}
 		return incidencias;
 	}
-	
+
 	public ArrayList<String> consultarTipo() {
 		Connection con = null;
 		Statement stmt = null;
@@ -200,7 +201,7 @@ public class BBDD {
 		}
 		return tipos;
 	}
-	
+
 	public ArrayList<String> consultarSubTipo(String tipo) {
 		Connection con = null;
 		Statement stmt = null;
@@ -211,7 +212,7 @@ public class BBDD {
 			con = conectar(con);
 
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT subtipo from tipo_incidencia where tipo = '"+tipo+"'");
+			ResultSet rs = stmt.executeQuery("SELECT subtipo from tipo_incidencia where tipo = '" + tipo + "'");
 			while (rs.next()) {
 				subTipo = rs.getString(1);
 				subTipos.add(subTipo);
@@ -222,20 +223,20 @@ public class BBDD {
 		}
 		return subTipos;
 	}
-	
+
 	public int consultarId(String subTipo) {
 		Connection con = null;
 		Statement stmt = null;
-		int id=0;
+		int id = 0;
 		try {
 
 			con = conectar(con);
 
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id from tipo_incidencia where subtipo = '"+subTipo+"'");
+			ResultSet rs = stmt.executeQuery("SELECT id from tipo_incidencia where subtipo = '" + subTipo + "'");
 			while (rs.next()) {
-				id= rs.getInt(1);
-				
+				id = rs.getInt(1);
+
 			}
 			con.close();
 		} catch (SQLException e) {
