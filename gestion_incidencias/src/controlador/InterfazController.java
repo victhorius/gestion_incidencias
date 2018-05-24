@@ -25,6 +25,7 @@ import vista.InicioSesion;
 import vista.MenuCrearIncidencia;
 import vista.MenuPrincipal;
 import vista.Registro;
+import vista.VerIncidencias;
 
 public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc = new UsuarioController();
@@ -129,7 +130,8 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 				comentario = m.obtenerComentario();
 				idIncidencia = c.consultarId(opcionComboSubTipo);
 
-				// hay que recuperar el id del usuario conectado, pongo 1 de prueba
+				// hay que recuperar el id del usuario conectado, pongo 1 de
+				// prueba
 				ic = new IncidenciasCreadas();
 				ic.setIdusuario(1);
 				ic.setIdincidencia(idIncidencia);
@@ -139,6 +141,11 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 			}
 
+		}
+
+		if (b.equals("mostrarEstadoIncidencias")) {
+			VerIncidencias vistaincidencias = new VerIncidencias();
+			vistaincidencias.setVisible(true);
 		}
 	}
 
@@ -205,7 +212,8 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 
-		// para que se actualice al combo de Subtipos con cada cambio en el de tipos
+		// para que se actualice al combo de Subtipos con cada cambio en el de
+		// tipos
 
 	}
 

@@ -1,13 +1,17 @@
 package modelo;
 
+import java.sql.Date;
+
 public class DatosIncidencias {
-	private String usuario, tipo, subtipo, fecha, comentario;
+	
+	private String usuario, tipo, subtipo, comentario;
+	Date fecha;
 
 	public DatosIncidencias() {
 
 	}
 
-	public DatosIncidencias(String usuario, String tipo, String subtipo, String fecha, String comentario) {
+	public DatosIncidencias(String usuario, String tipo, String subtipo, Date fecha, String comentario) {
 		super();
 		this.usuario = usuario;
 		this.tipo = tipo;
@@ -40,11 +44,11 @@ public class DatosIncidencias {
 		this.subtipo = subtipo;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

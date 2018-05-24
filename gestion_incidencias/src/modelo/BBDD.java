@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -148,8 +149,8 @@ public class BBDD {
 	 * con = conectar(con);
 	 * 
 	 * stmt = con.createStatement(); ResultSet rs =
-	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo +
-	 * "'"); while (rs.next()) { subtipo = rs.getString(1);
+	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" +
+	 * tipo + "'"); while (rs.next()) { subtipo = rs.getString(1);
 	 * System.out.println(subtipo); } con.close(); } catch (SQLException e) {
 	 * e.printStackTrace(); } return tipo; }
 	 */
@@ -273,5 +274,33 @@ public class BBDD {
 		SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<DatosIncidencias> consultarIncidencias() {
+		Connection con = null;
+		Statement stmt = null;
+		String tipo, subtipo, usuario, comentario = "";
+		Date fecha;
+		String consulta = "select usuario, tipo, subtipo, fecha, comentario from usuarios u, tipo_incidencia t, incidencias i where u.id=i.id and t.id=i.id";
+		ArrayList<DatosIncidencias> di = new ArrayList<DatosIncidencias>();
+		try {
+
+			con = conectar(con);
+
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(consulta);
+			while (rs.next()) {
+				usuario = rs.getString(1);
+				tipo = rs.getString(2);
+				subtipo = rs.getString(3);
+				fecha = rs.getDate(4);
+				comentario = rs.getString(5);
+				di.add(new DatosIncidencias(usuario, tipo, subtipo, fecha, comentario));
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return di;
 	}
 }
