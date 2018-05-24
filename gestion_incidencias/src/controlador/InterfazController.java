@@ -26,6 +26,7 @@ import vista.InicioSesion;
 import vista.MenuCrearIncidencia;
 import vista.MenuPrincipal;
 import vista.Registro;
+import vista.VerIncidencias;
 
 public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc = new UsuarioController();
@@ -153,10 +154,18 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 				comentario = (String) txtComentario.getText();
 				
 
+<<<<<<< HEAD
 				System.out.println((String) comboSubTipo.getSelectedItem()+" "+idIncidencia+" "+comentario);
 				//saca usuario null porque no lo recupera del atributo de clase
 				System.out.println("usuario conectado "+us.getUser());
 				// hay que recuperar el id del usuario conectado, pongo 1 de prueba
+=======
+				comentario = m.obtenerComentario();
+				idIncidencia = c.consultarId(opcionComboSubTipo);
+
+				// hay que recuperar el id del usuario conectado, pongo 1 de
+				// prueba
+>>>>>>> branch 'master' of https://github.com/victhorius/gestion_incidencias.git
 				ic = new IncidenciasCreadas();
 				ic.setIdusuario(1);
 				ic.setIdincidencia(idIncidencia);
@@ -169,7 +178,16 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			
 
 		}
+<<<<<<< HEAD
 	
+=======
+
+		if (b.equals("mostrarEstadoIncidencias")) {
+			VerIncidencias vistaincidencias = new VerIncidencias();
+			vistaincidencias.setVisible(true);
+		}
+	}
+>>>>>>> branch 'master' of https://github.com/victhorius/gestion_incidencias.git
 
 	@Override
 	public void focusGained(FocusEvent arg0) {
@@ -243,7 +261,12 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 		m.llenarComboSubTipo(c.consultarSubTipo(opcionComboTipo));
 		//opcionComboSubTipo = m.obtenerComboSubTipo();
 
+<<<<<<< HEAD
 	// para que se actualice al combo de Subtipos con cada cambio en el de tipos
+=======
+		// para que se actualice al combo de Subtipos con cada cambio en el de
+		// tipos
+>>>>>>> branch 'master' of https://github.com/victhorius/gestion_incidencias.git
 
 	}
 

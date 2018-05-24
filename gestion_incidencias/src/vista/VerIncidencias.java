@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
 
+import modelo.BBDD;
 import modelo.DatosIncidencias;
 import modelo.IncidenciasCreadas;
 
@@ -19,6 +20,7 @@ public class VerIncidencias extends JFrame {
 	DefaultTableModel modelo;
 	JScrollPane scroll;
 	DatosIncidencias di = new DatosIncidencias();
+	BBDD c = new BBDD();
 
 	public VerIncidencias() {
 		inicializarFrame();
@@ -26,7 +28,7 @@ public class VerIncidencias extends JFrame {
 	}
 
 	public void inicializarFrame() {
-		this.setTitle("VENTANA DE JTABLE CON ARRAYLIST");
+		this.setTitle("INCIDENCIAS CREADAS");
 		this.setSize(310, 200);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,15 +38,21 @@ public class VerIncidencias extends JFrame {
 		String cabeceras[] = { "USUARIO", "TIPO", "SUBTIPO", "FECHA", "COMENTARIO" };
 		tabla = new JTable();
 		modelo = new DefaultTableModel();
+		ArrayList<DatosIncidencias> di = c.consultarIncidencias();
+		insertarFila(di);
 		modelo.setColumnIdentifiers(cabeceras);
+
 		tabla.setModel(modelo);
 		scroll = new JScrollPane(tabla);
 
 		this.add(scroll);
 	}
 
-	public static void main(String[] args) {
-		VerIncidencias vi = new VerIncidencias();
+	public void insertarFila(ArrayList<DatosIncidencias> di) {
 
+		for (int i = 0; i < di.size(); i++) {
+			modelo.addRow(new Object[] { di.get(i).getUsuario(), di.get(i).getTipo(), di.get(i).getSubtipo(),
+					di.get(i).getFecha(), di.get(i).getComentario() });
+		}
 	}
 }
