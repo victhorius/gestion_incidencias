@@ -64,7 +64,7 @@ public class MenuCrearIncidencia extends JFrame {
 		comboTipo.setToolTipText("");
 		comboTipo.setBounds(256, 35, 122, 54);
 		comboTipo.setActionCommand("combotipo");
-		comboTipo.addItemListener(new InterfazController());
+		
 
 		comboSubtipo = new JComboBox<String>();
 		comboSubtipo.setToolTipText("");
@@ -74,7 +74,7 @@ public class MenuCrearIncidencia extends JFrame {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(39, 297, 97, 25);
 		btnAceptar.setActionCommand("aceptar");
-		btnAceptar.addActionListener(new InterfazController());
+		btnAceptar.addActionListener(new InterfazController(comboTipo,comboSubtipo,txtComentario));
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(297, 297, 97, 25);
@@ -96,10 +96,12 @@ public class MenuCrearIncidencia extends JFrame {
 
 			comboTipo.addItem(tipos.get(i));
 		}
-
+		comboTipo.addItemListener(new InterfazController(this));
 	}
 
 	public void llenarComboSubTipo(ArrayList<String> subTipos) {
+		
+		comboSubtipo.removeAllItems();
 
 		for (int i = 0; i < subTipos.size(); i++) {
 
@@ -109,8 +111,10 @@ public class MenuCrearIncidencia extends JFrame {
 	}
 
 	public String obtenerComboTipo() {
+		
+		return (String) comboTipo.getSelectedItem();
 
-		return comboTipo.getItemAt(comboTipo.getSelectedIndex());
+		//return comboTipo.getItemAt(comboTipo.getSelectedIndex());
 
 	}
 
