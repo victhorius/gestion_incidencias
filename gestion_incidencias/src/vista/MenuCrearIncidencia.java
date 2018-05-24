@@ -27,10 +27,12 @@ public class MenuCrearIncidencia extends JFrame {
 	private JButton btnAceptar, btnCancelar;
 	private JComboBox<String> comboTipo, comboSubtipo;
 	private JLabel tipo, subtipo;
+	Usuario us;
 
 	public MenuCrearIncidencia() {
 		inicializarFrame();
 		inicializarComponentes();
+		
 
 	}
 

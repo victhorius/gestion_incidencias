@@ -70,6 +70,8 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 		this.direccion = direccion;
 	}
 
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object b = e.getActionCommand();
@@ -85,12 +87,11 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 				if (uc.Login(u, pw) == true) {
 					c = new BBDD();
 					JOptionPane.showMessageDialog(null, "Login correcto");
-					new MenuPrincipal().setVisible(true);
 					us.setUser(u);
 					us.setPassword(pw);
+					us.setId(c.consultarIdUsuario(us));
 					
-					
-					
+					new MenuPrincipal(us).setVisible(true);
 
 				}
 

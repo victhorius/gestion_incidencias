@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import controlador.InterfazController;
+import modelo.Usuario;
 
 import javax.swing.JButton;
 
@@ -19,7 +20,7 @@ public class MenuPrincipal extends JFrame {
 	private JButton btnSalir;
 	private JButton btnCerrarSesion;
 
-	public MenuPrincipal() {
+	public MenuPrincipal(Usuario us) {
 		super();
 		inicializarFrame();
 		inicializarComponentes();
