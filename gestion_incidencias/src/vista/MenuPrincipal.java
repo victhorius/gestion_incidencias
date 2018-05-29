@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import controlador.InterfazController;
-import modelo.Usuario;
 
 import javax.swing.JButton;
 
@@ -20,7 +19,7 @@ public class MenuPrincipal extends JFrame {
 	private JButton btnSalir;
 	private JButton btnCerrarSesion;
 
-	public MenuPrincipal(Usuario us) {
+	public MenuPrincipal() {
 		super();
 		inicializarFrame();
 		inicializarComponentes();
@@ -57,6 +56,7 @@ public class MenuPrincipal extends JFrame {
 		btnMostrarEstadoDe.setHorizontalAlignment(SwingConstants.LEADING);
 		btnMostrarEstadoDe.setBounds(59, 184, 279, 37);
 		btnMostrarEstadoDe.setActionCommand("mostrarEstadoIncidencias");
+		btnMostrarEstadoDe.addActionListener(new InterfazController());
 
 		btnNewButton = new JButton("Editar Perfil");
 		btnNewButton.setFont(new Font("Tahoma", Font.ITALIC, 16));
@@ -66,12 +66,15 @@ public class MenuPrincipal extends JFrame {
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnSalir.setBounds(59, 312, 125, 36);
+		btnSalir.setActionCommand("salir");
+		btnSalir.addActionListener(new InterfazController());
 
 		btnCerrarSesion = new JButton("Cerrar Sesion");
 		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCerrarSesion.setBounds(213, 312, 125, 36);
-	
-		
+		btnCerrarSesion.setActionCommand("cerrarSesion");
+		btnCerrarSesion.addActionListener(new InterfazController());
+
 		this.add(lblBienvenidoUsuario);
 		this.add(lblqueQuieresHacer);
 		this.add(btnCrearIncidencia);

@@ -12,6 +12,5 @@ public class Principal {
 		 * mc.ejecucionMenu(opcion);
 		 */
 		new InicioSesion().setVisible(true);
-
 	}
 }

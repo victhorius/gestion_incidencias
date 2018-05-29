@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -14,13 +15,12 @@ import modelo.BBDD;
 import modelo.DatosIncidencias;
 import modelo.IncidenciasCreadas;
 
-public class VerIncidencias extends JFrame {
+public class VerIncidencias extends JDialog {
 
 	JTable tabla;
 	DefaultTableModel modelo;
 	JScrollPane scroll;
 	DatosIncidencias di = new DatosIncidencias();
-	BBDD c = new BBDD();
 
 	public VerIncidencias() {
 		inicializarFrame();
@@ -36,11 +36,12 @@ public class VerIncidencias extends JFrame {
 
 	public void inicializarComponentes() {
 		String cabeceras[] = { "USUARIO", "TIPO", "SUBTIPO", "FECHA", "COMENTARIO" };
+		BBDD c = new BBDD();
 		tabla = new JTable();
 		modelo = new DefaultTableModel();
+		modelo.setColumnIdentifiers(cabeceras);
 		ArrayList<DatosIncidencias> di = c.consultarIncidencias();
 		insertarFila(di);
-		modelo.setColumnIdentifiers(cabeceras);
 
 		tabla.setModel(modelo);
 		scroll = new JScrollPane(tabla);
@@ -54,5 +55,10 @@ public class VerIncidencias extends JFrame {
 			modelo.addRow(new Object[] { di.get(i).getUsuario(), di.get(i).getTipo(), di.get(i).getSubtipo(),
 					di.get(i).getFecha(), di.get(i).getComentario() });
 		}
+	}
+
+	public static void main(String[] args) {
+		VerIncidencias vi = new VerIncidencias();
+		vi.setVisible(true);
 	}
 }

@@ -26,6 +26,7 @@ import vista.InicioSesion;
 import vista.MenuCrearIncidencia;
 import vista.MenuPrincipal;
 import vista.Registro;
+import vista.VerIncidencias;
 
 public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
 	private UsuarioController uc = new UsuarioController();
@@ -36,24 +37,24 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 	BBDD c;
 	MenuCrearIncidencia m;
 	private JComboBox comboTipo, comboSubTipo;
-	private JTextField user, password,txtComentario;
+	private JTextField user, password, txtComentario;
 	private JTextField nombreUsuario, contrasenia, correoElectronico, direccion;
 
 	public InterfazController() {
 
 	}
-	
+
 	public InterfazController(MenuCrearIncidencia m) {
 
-		this.m=m;
+		this.m = m;
 	}
-	
-	public InterfazController(JComboBox comboTipo, JComboBox comboSubTipo,JTextField txtComentario) {
 
-		this.comboTipo=comboTipo;
-		this.comboSubTipo=comboSubTipo;
-		this.txtComentario=txtComentario;
-		
+	public InterfazController(JComboBox comboTipo, JComboBox comboSubTipo, JTextField txtComentario) {
+
+		this.comboTipo = comboTipo;
+		this.comboSubTipo = comboSubTipo;
+		this.txtComentario = txtComentario;
+
 	}
 
 	public InterfazController(JTextField user, JTextField password) {
@@ -70,8 +71,6 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 		this.direccion = direccion;
 	}
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object b = e.getActionCommand();
@@ -87,11 +86,9 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 				if (uc.Login(u, pw) == true) {
 					c = new BBDD();
 					JOptionPane.showMessageDialog(null, "Login correcto");
+					new MenuPrincipal().setVisible(true);
 					us.setUser(u);
 					us.setPassword(pw);
-					us.setId(c.consultarIdUsuario(us));
-					
-					new MenuPrincipal(us).setVisible(true);
 
 				}
 
@@ -115,11 +112,8 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			String conU = contrasenia.getText();
 			String coElU = correoElectronico.getText();
 			String dirU = direccion.getText();
-			Usuario u = new Usuario();
-			u.setUser(nomU);
-			u.setPassword(conU);
-			u.setCorreoElectronico(coElU);
-			u.setDireccion(dirU);
+			Usuario u = new Usuario(nomU, conU, coElU, dirU);
+			c = new BBDD();
 			c.registrarUsuario(u);
 			JOptionPane.showMessageDialog(null, "registrando");
 
@@ -139,41 +133,48 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			// retorna el String con el tipo, lo que ocurre que siempre me
 			// selecciona el primer elemento del comboBox
 			m.llenarComboTipo(c.consultarTipo());
-			
-			//m.llenarComboSubTipo(c.consultarSubTipo(opcionComboTipo));
-			//opcionComboSubTipo = m.obtenerComboSubTipo();
 
 		}
-			
-			if (b.equals("aceptar")) {
 
-				String comentario, opcionComboTipo;
-				int idIncidencia;
-				
-				c = new BBDD();
-				
-				
-				idIncidencia = c.consultarId((String) comboSubTipo.getSelectedItem());
-				comentario = (String) txtComentario.getText();
-				
+		if (b.equals("aceptar")) {
 
-				System.out.println((String) comboSubTipo.getSelectedItem()+" "+idIncidencia+" "+comentario);
-				//saca usuario null porque no lo recupera dle atributo de clase
-				System.out.println("usuario conectado "+us.getPassword());
-				// hay que recuperar el id del usuario conectado, pongo 1 de prueba
-				ic = new IncidenciasCreadas();
-				ic.setIdusuario(1);
-				ic.setIdincidencia(idIncidencia);
-				ic.setComentario(comentario);
+			String comentario, opcionComboTipo;
+			int idIncidencia;
+			c = new BBDD();
 
-				//c.registarIncidencia(ic);
+			idIncidencia = c.consultarId((String) comboSubTipo.getSelectedItem());
+			comentario = (String) txtComentario.getText();
 
-			}
-			
-			
+			System.out.println((String) comboSubTipo.getSelectedItem() + " " + idIncidencia + " " + comentario);
+			// saca usuario null porque no lo recupera del atributo de clase
+			System.out.println("usuario conectado " + us.getPassword());
+			// hay que recuperar el id del usuario conectado, pongo 1 de prueba
+			ic = new IncidenciasCreadas();
+			idUsuario = uc.retornarId();
+			ic.setIdusuario(idUsuario);
+			ic.setIdincidencia(idIncidencia);
+			ic.setComentario(comentario);
+
+			// c.registarIncidencia(ic);
 
 		}
-	
+
+		if (b.equals("cancelar")) {
+			new MenuPrincipal().setVisible(true);
+		}
+
+		if (b.equals("salir")) {
+			System.exit(0);
+			JOptionPane.showMessageDialog(null, "Hasta pronto!");
+		}
+		if (b.equals("cerrarSesion")) {
+			new InicioSesion().setVisible(true);
+		}
+
+		if (b.equals("mostrarEstadoIncidencias")) {
+			new VerIncidencias().setVisible(true);
+		}
+	}
 
 	@Override
 	public void focusGained(FocusEvent arg0) {
@@ -237,17 +238,18 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		
+
 		c = new BBDD();
-		
+
 		String opcionComboTipo, opcionComboSubTipo;
-		
+
 		opcionComboTipo = m.obtenerComboTipo();
 		System.out.println(opcionComboTipo);
 		m.llenarComboSubTipo(c.consultarSubTipo(opcionComboTipo));
-		//opcionComboSubTipo = m.obtenerComboSubTipo();
+		// opcionComboSubTipo = m.obtenerComboSubTipo();
 
-	// para que se actualice al combo de Subtipos con cada cambio en el de tipos
+		// para que se actualice al combo de Subtipos con cada cambio en el de
+		// tipos
 
 	}
 

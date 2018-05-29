@@ -76,29 +76,33 @@ public class BBDD {
 	 * ***Comprobamos que sea correcto el usuario y contraseña con la bbdd***
 	 */
 
-	public String consultarUsuarioContrasenia(Usuario u) {
+	public Usuario consultarUsuarioContrasenia(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
 		String usuariocontrasenia = "";
 		String usuario = "";
 		String contrasenia = "";
+		int id;
+		Usuario us = null;
 		try {
 
 			con = conectar(con);
 
 			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select usuario, password from usuarios where usuario='" + u.getUser()
+			ResultSet rs = stmt.executeQuery("select usuario, password, id from usuarios where usuario='" + u.getUser()
 					+ "' and password='" + u.getPassword() + "'");
 			rs.next();
 			usuario = rs.getString(1);
 			contrasenia = rs.getString(2);
+			id = rs.getInt(3);
+			us = new Usuario(usuario, contrasenia, id);
 			usuariocontrasenia = usuario + contrasenia;
 
 			con.close();
 		} catch (SQLException e) {
 			e.getMessage();
 		}
-		return usuariocontrasenia;
+		return us;
 	}
 
 	public int consultarIdUsuario(Usuario u) {

@@ -6,6 +6,7 @@ import modelo.Usuario;
 public class UsuarioController {
 	BBDD c;
 	datosPantalla dp;
+	Usuario u;
 
 	public UsuarioController() {
 		c = new BBDD();
@@ -24,9 +25,10 @@ public class UsuarioController {
 
 	public boolean Login(String user, String pw) throws Exception {
 		boolean login = false;
-		Usuario u = new Usuario(user, pw);
+		u = new Usuario(user, pw);
 		String usuariopw = user + pw;
-		if (usuariopw.equals(c.consultarUsuarioContrasenia(u))) {
+		if (usuariopw
+				.equals(c.consultarUsuarioContrasenia(u).getUser() + c.consultarUsuarioContrasenia(u).getPassword())) {
 			System.out.println("LOGIN CORRECTO");
 			login = true;
 		} else {
@@ -36,6 +38,11 @@ public class UsuarioController {
 
 		}
 		return login;
+	}
+
+	public int retornarId() {
+		u = c.consultarUsuarioContrasenia(u);
+		return u.getId();
 	}
 
 }

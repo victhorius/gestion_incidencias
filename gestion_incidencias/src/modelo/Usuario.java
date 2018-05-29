@@ -9,6 +9,13 @@ public class Usuario {
 
 	}
 
+	public Usuario(String user, String password, int id) {
+		super();
+		this.user = user;
+		this.password = password;
+		this.id = id;
+	}
+
 	public Usuario(String usuario, String contrasenia) {
 		super();
 		this.user = usuario;
