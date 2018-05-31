@@ -3,29 +3,36 @@ package modelo;
 import java.sql.Date;
 
 public class DatosIncidencias {
-	
-	private String usuario, tipo, subtipo, comentario;
-	Date fecha;
+
+	private String estado, tipo, subtipo, comentario;
+	String fecha;
+	int idincidencia;
 
 	public DatosIncidencias() {
 
 	}
+	
+	
 
-	public DatosIncidencias(String usuario, String tipo, String subtipo, Date fecha, String comentario) {
+	public DatosIncidencias(String estado, String tipo, String subtipo, String comentario, String fecha,
+			int idincidencia) {
 		super();
-		this.usuario = usuario;
+		this.estado = estado;
 		this.tipo = tipo;
 		this.subtipo = subtipo;
-		this.fecha = fecha;
 		this.comentario = comentario;
+		this.fecha = fecha;
+		this.idincidencia = idincidencia;
 	}
 
-	public String getUsuario() {
-		return usuario;
+
+
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public String getTipo() {
@@ -44,14 +51,6 @@ public class DatosIncidencias {
 		this.subtipo = subtipo;
 	}
 
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
 	public String getComentario() {
 		return comentario;
 	}
@@ -59,5 +58,22 @@ public class DatosIncidencias {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public int getIdincidencia() {
+		return idincidencia;
+	}
+
+	public void setIdincidencia(int idincidencia) {
+		this.idincidencia = idincidencia;
+	}
+
 
 }

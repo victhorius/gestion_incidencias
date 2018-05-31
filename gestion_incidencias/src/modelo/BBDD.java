@@ -153,8 +153,8 @@ public class BBDD {
 	 * con = conectar(con);
 	 * 
 	 * stmt = con.createStatement(); ResultSet rs =
-	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" +
-	 * tipo + "'"); while (rs.next()) { subtipo = rs.getString(1);
+	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo +
+	 * "'"); while (rs.next()) { subtipo = rs.getString(1);
 	 * System.out.println(subtipo); } con.close(); } catch (SQLException e) {
 	 * e.printStackTrace(); } return tipo; }
 	 */
@@ -261,10 +261,13 @@ public class BBDD {
 
 		try {
 
-			stmt = con.prepareStatement("insert into incidencias (idusuario,idincidencia,comentario) values (?,?,?)");
+			stmt = con.prepareStatement(
+					"insert into incidencias (idusuario,idincidencia,comentario,fecha_registro, estado) values (?,?,?,Now(),?)");
 			stmt.setInt(1, ic.getIdusuario());
 			stmt.setInt(2, ic.getIdincidencia());
 			stmt.setString(3, ic.getComentario());
+			// stmt.setString(4, ic.getFecha());
+			stmt.setString(4, ic.getEstado());
 
 			stmt.executeUpdate();
 
@@ -280,12 +283,14 @@ public class BBDD {
 		}
 	}
 
-	public ArrayList<DatosIncidencias> consultarIncidencias() {
+	public ArrayList<DatosIncidencias> consultarIncidencias(int idUsuario) {
 		Connection con = null;
 		Statement stmt = null;
-		String tipo, subtipo, usuario, comentario = "";
-		Date fecha;
-		String consulta = "select usuario, tipo, subtipo, fecha, comentario from usuarios u, tipo_incidencia t, incidencias i where u.id=i.id and t.id=i.id";
+		String tipo, subtipo, comentario,estado;
+		int idincidencia;
+		String fecha;
+		String consulta = "select idincidencia, tipo, subtipo, comentario, fecha_registro, estado "
+				+ "from tipo_incidencia, incidencias where tipo_incidencia.id=incidencias.idincidencia and idusuario="+idUsuario;
 		ArrayList<DatosIncidencias> di = new ArrayList<DatosIncidencias>();
 		try {
 
@@ -294,12 +299,14 @@ public class BBDD {
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(consulta);
 			while (rs.next()) {
-				usuario = rs.getString(1);
+				idincidencia = rs.getInt(1);
 				tipo = rs.getString(2);
 				subtipo = rs.getString(3);
-				fecha = rs.getDate(4);
-				comentario = rs.getString(5);
-				di.add(new DatosIncidencias(usuario, tipo, subtipo, fecha, comentario));
+				comentario = rs.getString(4);
+				fecha = rs.getString(5);
+				estado = rs.getString(6);
+				
+				//di.add(new DatosIncidencias(idincidencia, tipo, subtipo, fecha, comentario));
 			}
 			con.close();
 		} catch (SQLException e) {
