@@ -255,10 +255,6 @@ public class BBDD {
 		con = conectar(con);
 		PreparedStatement stmt = null;
 
-		/**
-		 * ***INSERTAMOS USUARIO***
-		 */
-
 		try {
 
 			stmt = con.prepareStatement("insert into incidencias (idusuario,idincidencia,comentario) values (?,?,?)");
