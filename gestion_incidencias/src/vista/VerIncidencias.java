@@ -2,18 +2,13 @@ package vista;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import java.awt.GridLayout;
 import java.util.ArrayList;
-
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
-
+import controlador.Principal;
 import modelo.BBDD;
 import modelo.DatosIncidencias;
-import modelo.IncidenciasCreadas;
 
 public class VerIncidencias extends JDialog {
 
@@ -31,16 +26,16 @@ public class VerIncidencias extends JDialog {
 		this.setTitle("INCIDENCIAS CREADAS");
 		this.setSize(310, 200);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
 
 	public void inicializarComponentes() {
-		String cabeceras[] = { "USUARIO", "TIPO", "SUBTIPO", "FECHA", "COMENTARIO" };
+		String cabeceras[] = { "ID_INCIDENCIA", "TIPO", "SUBTIPO", "COMENTARIO", "FECHA_REGISTRO", "ESTADO" };
 		BBDD c = new BBDD();
 		tabla = new JTable();
 		modelo = new DefaultTableModel();
 		modelo.setColumnIdentifiers(cabeceras);
-		ArrayList<DatosIncidencias> di = c.consultarIncidencias();
+		ArrayList<DatosIncidencias> di = c.consultarIncidencias(Principal.getIdUsuario());
 		insertarFila(di);
 
 		tabla.setModel(modelo);
@@ -52,12 +47,8 @@ public class VerIncidencias extends JDialog {
 	public void insertarFila(ArrayList<DatosIncidencias> di) {
 
 		for (int i = 0; i < di.size(); i++) {
-			modelo.addRow(new Object[] { di.get(i).getUsuario(), di.get(i).getTipo(), di.get(i).getSubtipo(),
+			modelo.addRow(new Object[] { di.get(i).getIdincidencia(), di.get(i).getTipo(), di.get(i).getSubtipo(),
 					di.get(i).getFecha(), di.get(i).getComentario() });
 		}
-	}
-
-	public static void main(String[] args) {
-		new VerIncidencias().setVisible(true);
 	}
 }

@@ -147,9 +147,7 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			comentario = (String) txtComentario.getText();
 
 			System.out.println((String) comboSubTipo.getSelectedItem() + " " + idIncidencia + " " + comentario);
-			// saca usuario null porque no lo recupera del atributo de clase
-			System.out.println("usuario conectado " + us.getPassword());
-			// hay que recuperar el id del usuario conectado, pongo 1 de prueba
+
 			ic = new IncidenciasCreadas();
 			// idUsuario = uc.retornarId();
 
@@ -159,6 +157,9 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			ic.setComentario(comentario);
 
 			// Registra ya la incidencia
+			ic.setFecha("Now()");
+			ic.setEstado("en curso");
+
 			c.registarIncidencia(ic);
 
 		}
