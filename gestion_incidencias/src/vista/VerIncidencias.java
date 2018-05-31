@@ -58,7 +58,6 @@ public class VerIncidencias extends JDialog {
 	}
 
 	public static void main(String[] args) {
-		VerIncidencias vi = new VerIncidencias();
-		vi.setVisible(true);
+		new VerIncidencias().setVisible(true);
 	}
 }

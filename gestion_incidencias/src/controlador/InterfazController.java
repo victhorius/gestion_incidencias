@@ -151,14 +151,14 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			System.out.println("usuario conectado " + us.getPassword());
 			// hay que recuperar el id del usuario conectado, pongo 1 de prueba
 			ic = new IncidenciasCreadas();
-			//idUsuario = uc.retornarId();
-			
-			//recuperamos id Usuario del static del Principal
+			// idUsuario = uc.retornarId();
+
+			// recuperamos id Usuario del static del Principal
 			ic.setIdusuario(Principal.getIdUsuario());
 			ic.setIdincidencia(idIncidencia);
 			ic.setComentario(comentario);
-			
-			//Registra ya la incidencia
+
+			// Registra ya la incidencia
 			c.registarIncidencia(ic);
 
 		}
