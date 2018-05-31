@@ -9,6 +9,7 @@ import controlador.InterfazController;
 
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class MenuPrincipal extends JFrame {
 
 	private JLabel lblBienvenidoUsuario;

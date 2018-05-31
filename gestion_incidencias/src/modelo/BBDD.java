@@ -1,7 +1,6 @@
 package modelo;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,10 +59,6 @@ public class BBDD {
 			stmt.setString(4, u.getDireccion());
 			stmt.executeUpdate();
 
-			/*
-			 * if (filaInsertada > 0) System.out.println("fila insertada");
-			 */
-
 			con.close();
 		} catch (
 
@@ -72,14 +67,9 @@ public class BBDD {
 		}
 	}
 
-	/*
-	 * ***Comprobamos que sea correcto el usuario y contraseña con la bbdd***
-	 */
-
 	public Usuario consultarUsuarioContrasenia(Usuario u) {
 		Connection con = null;
 		Statement stmt = null;
-		String usuariocontrasenia = "";
 		String usuario = "";
 		String contrasenia = "";
 		int id;
@@ -96,7 +86,6 @@ public class BBDD {
 			contrasenia = rs.getString(2);
 			id = rs.getInt(3);
 			us = new Usuario(usuario, contrasenia, id);
-			usuariocontrasenia = usuario + contrasenia;
 
 			con.close();
 		} catch (SQLException e) {
@@ -145,19 +134,6 @@ public class BBDD {
 		}
 		return tipo;
 	}
-
-	/*
-	 * public String consultarSubtipos(String tipo) { Connection con = null;
-	 * Statement stmt = null; String subtipo = ""; try {
-	 * 
-	 * con = conectar(con);
-	 * 
-	 * stmt = con.createStatement(); ResultSet rs =
-	 * stmt.executeQuery("select subtipo from tipo_incidencia where tipo='" + tipo +
-	 * "'"); while (rs.next()) { subtipo = rs.getString(1);
-	 * System.out.println(subtipo); } con.close(); } catch (SQLException e) {
-	 * e.printStackTrace(); } return tipo; }
-	 */
 
 	public ArrayList<Incidencia> consultarTipoYSubtipo() {
 		Connection con = null;
@@ -265,10 +241,6 @@ public class BBDD {
 			stmt.setString(4, ic.getEstado());
 
 			stmt.executeUpdate();
-
-			/*
-			 * if (filaInsertada > 0) System.out.println("fila insertada");
-			 */
 
 			con.close();
 		} catch (

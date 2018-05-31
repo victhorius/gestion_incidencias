@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 
 import controlador.InterfazController;
 
+@SuppressWarnings("serial")
 public class InicioSesion extends JFrame {
 
 	private JLabel l1, l2;

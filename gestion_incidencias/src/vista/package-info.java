@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Viclanda
- *
- */
-package vista;

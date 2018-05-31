@@ -1,7 +1,5 @@
 package modelo;
 
-import java.sql.Date;
-
 public class DatosIncidencias {
 
 	private String estado, tipo, subtipo, comentario;

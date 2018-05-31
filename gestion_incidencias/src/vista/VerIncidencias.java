@@ -10,6 +10,7 @@ import controlador.Principal;
 import modelo.BBDD;
 import modelo.DatosIncidencias;
 
+@SuppressWarnings("serial")
 public class VerIncidencias extends JDialog {
 
 	JTable tabla;
@@ -24,7 +25,7 @@ public class VerIncidencias extends JDialog {
 
 	public void inicializarFrame() {
 		this.setTitle("INCIDENCIAS CREADAS");
-		this.setSize(310, 200);
+		this.setSize(500, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}

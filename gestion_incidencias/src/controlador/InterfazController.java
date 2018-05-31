@@ -2,23 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import com.mysql.fabric.xmlrpc.base.Array;
-import com.sun.prism.impl.shape.OpenPiscesRasterizer;
-
 import modelo.BBDD;
 import modelo.IncidenciasCreadas;
 import modelo.Usuario;
@@ -28,14 +16,13 @@ import vista.MenuPrincipal;
 import vista.Registro;
 import vista.VerIncidencias;
 
-public class InterfazController implements ActionListener, ItemListener, MouseListener, KeyListener, FocusListener {
+public class InterfazController implements ActionListener, ItemListener {
 	private UsuarioController uc = new UsuarioController();
-	// private IncidenciaController ic = new IncidenciaController();
 	private IncidenciasCreadas ic;
 	private Usuario us = new Usuario();
-	private int idUsuario;
 	BBDD c;
 	MenuCrearIncidencia m;
+	@SuppressWarnings({ "rawtypes", "unused" })
 	private JComboBox comboTipo, comboSubTipo;
 	private JTextField user, password, txtComentario;
 	private JTextField nombreUsuario, contrasenia, correoElectronico, direccion;
@@ -49,7 +36,8 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 		this.m = m;
 	}
 
-	public InterfazController(JComboBox comboTipo, JComboBox comboSubTipo, JTextField txtComentario) {
+	public InterfazController(@SuppressWarnings("rawtypes") JComboBox comboTipo,
+			@SuppressWarnings("rawtypes") JComboBox comboSubTipo, JTextField txtComentario) {
 
 		this.comboTipo = comboTipo;
 		this.comboSubTipo = comboSubTipo;
@@ -126,8 +114,6 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 		if (b.equals("crearIncidencia")) {
 
-			String opcionComboTipo, opcionComboSubTipo;
-
 			m = new MenuCrearIncidencia();
 			m.setVisible(true);
 			c = new BBDD();
@@ -139,7 +125,7 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 
 		if (b.equals("aceptar")) {
 
-			String comentario, opcionComboTipo;
+			String comentario;
 			int idIncidencia;
 			c = new BBDD();
 
@@ -178,79 +164,15 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 	}
 
 	@Override
-	public void focusGained(FocusEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void focusLost(FocusEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void itemStateChanged(ItemEvent e) {
 
 		c = new BBDD();
 
-		String opcionComboTipo, opcionComboSubTipo;
+		String opcionComboTipo;
 
 		opcionComboTipo = m.obtenerComboTipo();
 		System.out.println(opcionComboTipo);
 		m.llenarComboSubTipo(c.consultarSubTipo(opcionComboTipo));
-		// opcionComboSubTipo = m.obtenerComboSubTipo();
-
-		// para que se actualice al combo de Subtipos con cada cambio en el de
-		// tipos
 
 	}
 

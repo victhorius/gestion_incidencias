@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.Calendar;
-
 public class IncidenciasCreadas {
 	private String fecha;
 	private String comentario;
@@ -63,7 +61,7 @@ public class IncidenciasCreadas {
 
 	@Override
 	public String toString() {
-		return "IncidenciasCreadas [fecha=" + fecha + ", comentario=" + comentario + ", idusuario="
-				+ idusuario + ", idincidencia=" + idincidencia + "]";
+		return "IncidenciasCreadas [fecha=" + fecha + ", comentario=" + comentario + ", idusuario=" + idusuario
+				+ ", idincidencia=" + idincidencia + "]";
 	}
 }

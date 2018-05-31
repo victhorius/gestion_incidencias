@@ -1,7 +1,6 @@
 package controlador;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -167,17 +166,12 @@ public class datosPantalla {
 		IncidenciasCreadas incidencia = new IncidenciasCreadas();
 
 		incidencia.setComentario(comentario);
-		incidencia.setFecha(Calendar.getInstance());
 		incidencia.setIdincidencia(idincidencia);
 		incidencia.setIdusuario(u.getId());
 
 		System.out.println(incidencia.toString());
 
 		return incidencia;
-
-	}
-
-	public void menuColsultarEstadoIncidencias(Usuario u) {
 
 	}
 }

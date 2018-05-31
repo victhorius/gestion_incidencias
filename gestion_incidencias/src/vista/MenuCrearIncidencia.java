@@ -1,27 +1,15 @@
 package vista;
 
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Iterator;
-
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-
 import controlador.InterfazController;
-import javafx.scene.control.ComboBox;
-import modelo.BBDD;
-import modelo.Incidencia;
-import modelo.IncidenciasCreadas;
-import modelo.Usuario;
-
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class MenuCrearIncidencia extends JFrame {
 	private JTextField txtComentario;
 	private JButton btnAceptar, btnCancelar;
@@ -112,8 +100,6 @@ public class MenuCrearIncidencia extends JFrame {
 	public String obtenerComboTipo() {
 
 		return (String) comboTipo.getSelectedItem();
-
-		// return comboTipo.getItemAt(comboTipo.getSelectedIndex());
 
 	}
 

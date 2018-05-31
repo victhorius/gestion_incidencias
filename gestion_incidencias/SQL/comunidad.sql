@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-04-2018 a las 12:19:41
+-- Tiempo de generación: 31-05-2018 a las 15:35:23
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.4
 
@@ -32,7 +32,9 @@ CREATE TABLE `incidencias` (
   `id` int(11) NOT NULL,
   `idusuario` int(2) NOT NULL,
   `idincidencia` int(2) NOT NULL,
-  `comentario` varchar(250) NOT NULL
+  `comentario` varchar(250) NOT NULL,
+  `fecha_registro` date NOT NULL,
+  `estado` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -53,7 +55,12 @@ CREATE TABLE `tipo_incidencia` (
 
 INSERT INTO `tipo_incidencia` (`id`, `tipo`, `subtipo`) VALUES
 (1, 'agua', 'inundacion'),
-(2, 'agua', 'fallo agua caliente');
+(2, 'agua', 'fallo agua caliente'),
+(3, 'luz', 'bombilla'),
+(4, 'luz', 'apagon'),
+(5, 'ascensor', 'bloqueo'),
+(6, 'agua', 'corte'),
+(7, 'agua', 'sucia');
 
 -- --------------------------------------------------------
 
@@ -112,19 +119,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `incidencias`
 --
 ALTER TABLE `incidencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_incidencia`
 --
 ALTER TABLE `tipo_incidencia`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

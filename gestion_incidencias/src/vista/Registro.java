@@ -6,11 +6,11 @@ import controlador.InterfazController;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class Registro extends JFrame {
 	private JLabel lblNombreUsuario, lblRegistrate, lblDireccin, lblCorreoElectronico, lblContrasea, lblyaTienesCuenta;
 	private JTextField CorreoElectronico, Direccion, NombreUsuario, Contrasenia;

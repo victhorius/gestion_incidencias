@@ -1,8 +1,6 @@
 package controlador;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import modelo.BBDD;
 import modelo.Incidencia;
 
