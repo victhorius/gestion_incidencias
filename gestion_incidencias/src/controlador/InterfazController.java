@@ -147,19 +147,15 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 			comentario = (String) txtComentario.getText();
 
 			System.out.println((String) comboSubTipo.getSelectedItem() + " " + idIncidencia + " " + comentario);
-
+			// saca usuario null porque no lo recupera del atributo de clase
+			System.out.println("usuario conectado " + Principal.getIdUsuario());
 			ic = new IncidenciasCreadas();
-			// idUsuario = uc.retornarId();
-
 			// recuperamos id Usuario del static del Principal
 			ic.setIdusuario(Principal.getIdUsuario());
 			ic.setIdincidencia(idIncidencia);
 			ic.setComentario(comentario);
 
 			// Registra ya la incidencia
-			ic.setFecha("Now()");
-			ic.setEstado("en curso");
-
 			c.registarIncidencia(ic);
 
 		}
@@ -169,8 +165,8 @@ public class InterfazController implements ActionListener, ItemListener, MouseLi
 		}
 
 		if (b.equals("salir")) {
-			System.exit(0);
 			JOptionPane.showMessageDialog(null, "Hasta pronto!");
+			System.exit(0);
 		}
 		if (b.equals("cerrarSesion")) {
 			new InicioSesion().setVisible(true);
