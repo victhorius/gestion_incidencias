@@ -48,7 +48,7 @@ public class VerIncidencias extends JDialog {
 
 		for (int i = 0; i < di.size(); i++) {
 			modelo.addRow(new Object[] { di.get(i).getIdincidencia(), di.get(i).getTipo(), di.get(i).getSubtipo(),
-					di.get(i).getFecha(), di.get(i).getComentario() });
+					 di.get(i).getComentario(),di.get(i).getFecha(),di.get(i).getEstado() });
 		}
 	}
 }

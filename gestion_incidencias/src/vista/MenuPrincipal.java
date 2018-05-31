@@ -15,7 +15,6 @@ public class MenuPrincipal extends JFrame {
 	private JLabel lblqueQuieresHacer;
 	private JButton btnCrearIncidencia;
 	private JButton btnMostrarEstadoDe;
-	private JButton btnNewButton;
 	private JButton btnSalir;
 	private JButton btnCerrarSesion;
 
@@ -47,41 +46,35 @@ public class MenuPrincipal extends JFrame {
 		btnCrearIncidencia = new JButton("Crear  Incidencia");
 		btnCrearIncidencia.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		btnCrearIncidencia.setHorizontalAlignment(SwingConstants.LEADING);
-		btnCrearIncidencia.setBounds(59, 125, 279, 37);
+		btnCrearIncidencia.setBounds(59, 125, 279, 66);
 		btnCrearIncidencia.setActionCommand("crearIncidencia");
 		btnCrearIncidencia.addActionListener(new InterfazController());
 
 		btnMostrarEstadoDe = new JButton("Mostrar estado de las incidencias");
 		btnMostrarEstadoDe.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		btnMostrarEstadoDe.setHorizontalAlignment(SwingConstants.LEADING);
-		btnMostrarEstadoDe.setBounds(59, 184, 279, 37);
+		btnMostrarEstadoDe.setBounds(59, 204, 279, 66);
 		btnMostrarEstadoDe.setActionCommand("mostrarEstadoIncidencias");
 		btnMostrarEstadoDe.addActionListener(new InterfazController());
 
-		btnNewButton = new JButton("Editar Perfil");
-		btnNewButton.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
-		btnNewButton.setBounds(59, 242, 279, 37);
-
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnSalir.setBounds(59, 312, 125, 36);
+		btnSalir.setBounds(59, 289, 125, 59);
 		btnSalir.setActionCommand("salir");
 		btnSalir.addActionListener(new InterfazController());
 
 		btnCerrarSesion = new JButton("Cerrar Sesion");
 		btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnCerrarSesion.setBounds(213, 312, 125, 36);
+		btnCerrarSesion.setBounds(213, 289, 125, 59);
 		btnCerrarSesion.setActionCommand("cerrarSesion");
 		btnCerrarSesion.addActionListener(new InterfazController());
 
-		this.add(lblBienvenidoUsuario);
-		this.add(lblqueQuieresHacer);
-		this.add(btnCrearIncidencia);
-		this.add(btnMostrarEstadoDe);
-		this.add(btnNewButton);
-		this.add(btnSalir);
-		this.add(btnCerrarSesion);
+		getContentPane().add(lblBienvenidoUsuario);
+		getContentPane().add(lblqueQuieresHacer);
+		getContentPane().add(btnCrearIncidencia);
+		getContentPane().add(btnMostrarEstadoDe);
+		getContentPane().add(btnSalir);
+		getContentPane().add(btnCerrarSesion);
 
 	}
 

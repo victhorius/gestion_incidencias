@@ -261,7 +261,7 @@ public class BBDD {
 			stmt.setInt(1, ic.getIdusuario());
 			stmt.setInt(2, ic.getIdincidencia());
 			stmt.setString(3, ic.getComentario());
-			// stmt.setString(4, ic.getFecha());
+			ic.setEstado("Abierta");
 			stmt.setString(4, ic.getEstado());
 
 			stmt.executeUpdate();
